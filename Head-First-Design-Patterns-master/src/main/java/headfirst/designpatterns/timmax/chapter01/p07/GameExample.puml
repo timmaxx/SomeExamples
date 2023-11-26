@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface WeaponBehavior {
+  useWeapon();
+}
+
+class KnifeBehavior implements WeaponBehavior{
+  useWeapon();
+}
+
+class BowAndArrowBehavior implements WeaponBehavior{
+  useWeapon();
+}
+
+class AxeBehavior implements WeaponBehavior{
+  useWeapon();
+}
+
+class SwordBehavior implements WeaponBehavior{
+  useWeapon();
+}
+
+abstract class Character {
+  WeaponBehavior weapon;
+  fight();
+  setWeapon();
+}
+Character -> WeaponBehavior
+
+class Queen extends Character {
+  fight();
+  setWeapon();
+}
+
+class King extends Character {
+  fight();
+  setWeapon();
+}
+
+class Troll extends Character {
+  fight();
+  setWeapon();
+}
+
+class Knight extends Character {
+  fight();
+  setWeapon();
+}
+
+@enduml

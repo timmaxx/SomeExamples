@@ -1,0 +1,131 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+abstract class Application
+
+abstract class Node
+abstract class Shape extends Node
+class ImageView extends Node
+
+note top of Shape
+  Базовый класс для создания
+  геометрических двухмерных примитивов
+  (например, линия, прямоугольник, эллипс).
+end note
+
+class Text extends Shape
+
+abstract class Parent extends Node
+note top of Parent
+    Базовый класс для всех элементов,
+    которые могут содержать другие элементы.
+    Функциональность для управления
+    вложенными узлами, их добавления и удаления
+    и прочие операции с ними.
+end note
+
+class Group extends Parent
+note top of Group
+    Контейнер для группы объектов.
+end note
+
+class Region extends Parent
+note top of Region
+    Базовый класс для всех элементов управления,
+    панелей компоновки и диаграмм.
+    Его отличительная особенность состоит в том,
+    что он добавляет функциональность управления
+    границами и размерами элементов.
+end note
+
+
+class Pane extends Region
+note top of Pane
+    Базовый класс для всех панелей компоновки,
+    которые позволяют управлять расположением
+    вложенных элементов,
+    определенным образом упорядочивать их.
+end note
+
+class AnchorPane extends Pane
+class BorderPane extends Pane
+class FlowPane extends Pane
+class GridPane extends Pane
+class HBox extends Pane
+class VBox extends Pane
+class StackPane extends Pane
+
+class TilePane extends Pane
+
+
+abstract class Control extends Region
+note top of Control
+    Базовый класс для всех элементов управления
+    (кнопок, текстовых полей ввода, списков и т.д.).
+end note
+
+class TableView<S> extends Control
+class TreeView<T> extends Control
+class ChoiceBox<T> extends Control
+class ListView<T> extends Control
+class Slider extends Control
+class ScrollPane extends Control
+abstract class TextInputControl extends Control
+class TextField extends TextInputControl
+class TextArea extends TextInputControl
+
+abstract class Labeled extends Control
+class Label extends Labeled
+abstract class ButtonBase extends Labeled
+class Button extends ButtonBase
+class CheckBox extends ButtonBase
+class ToggleButton extends ButtonBase
+class RadioButton extends ToggleButton
+
+abstract class ComboBoxBase<T> extends Control
+class ComboBox<T> extends ComboBoxBase
+
+abstract class TableColumnBase<S, T>
+class TableColumn<S, T> extends TableColumnBase
+
+abstract class Chart extends Region
+note top of Chart
+    Базовый класс для всех диаграмм.
+end note
+
+abstract class XYChart<X, Y> extends Chart
+
+class Scene
+
+enum Priority
+
+class Window
+class Stage extends Window
+abstract class PopupWindow extends Window
+class PopupControl extends PopupWindow
+class Tooltip extends PopupControl
+
+abstract class Paint
+class Color extends Paint
+
+abstract class ConstraintsBase
+class ColumnConstraints extends ConstraintsBase
+class RowConstraints extends ConstraintsBase
+
+class EventObject
+class Event extends EventObject
+class ActionEvent extends Event
+
+class ToggleGroup
+
+abstract class SelectionModel<T>
+abstract class MultipleSelectionModel<T> extends SelectionModel
+
+class TreeItem<T> implements EventTarget
+
+class PropertyValueFactory<S, T>
+
+
+
+@enduml

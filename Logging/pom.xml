@@ -15,6 +15,7 @@
     </properties>
 
     <dependencies>
+        <!-- Для примеров timmax.logging.slf4j.p0X достаточно этого -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>

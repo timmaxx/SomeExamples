@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 
 public class Example03 {
     public static void main(String[] args) {
-        ch.qos.logback.classic.Logger logger =
+        Logger logger =
                 (ch.qos.logback.classic.Logger) LoggerFactory.getLogger("com.baeldung.logback");
         logger.debug("Hi there!");
 

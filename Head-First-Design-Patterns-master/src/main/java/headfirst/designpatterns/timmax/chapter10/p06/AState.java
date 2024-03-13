@@ -1,6 +1,6 @@
 package headfirst.designpatterns.timmax.chapter10.p06;
 
-public abstract class AState implements State {
+public abstract class AState implements StateProtected {
     protected StateOfGumballMachine stateOfGumballMachine;
 
     public AState(StateOfGumballMachine stateOfGumballMachine) {

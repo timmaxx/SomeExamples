@@ -1,13 +1,13 @@
 package headfirst.designpatterns.timmax.chapter10.p06;
 
-public class StateOfGumballMachine {
-    State soldOutState;
-    State noQuarterState;
-    State hasQuarterState;
-    State soldState;
-    State winnerState;
+public class StateOfGumballMachine implements State {
+    StateProtected soldOutState;
+    StateProtected noQuarterState;
+    StateProtected hasQuarterState;
+    StateProtected soldState;
+    StateProtected winnerState;
 
-    State state = soldOutState;
+    StateProtected state = soldOutState;
 
     int count;
 
@@ -24,35 +24,35 @@ public class StateOfGumballMachine {
         }
     }
 
-    protected State getState() {
+    protected StateProtected getState() {
         return state;
     }
 
-    protected void setState(State state) {
+    protected void setState(StateProtected state) {
         this.state = state;
     }
 
-    protected State getSoldOutState() {
+    protected StateProtected getSoldOutState() {
         return soldOutState;
     }
 
-    protected State getNoQuarterState() {
+    protected StateProtected getNoQuarterState() {
         return noQuarterState;
     }
 
-    protected State getHasQuarterState() {
+    protected StateProtected getHasQuarterState() {
         return hasQuarterState;
     }
 
-    protected State getSoldState() {
+    protected StateProtected getSoldState() {
         return soldState;
     }
 
-    protected State getWinnerState() {
+    protected StateProtected getWinnerState() {
         return winnerState;
     }
 
-    protected int getCount() {
+    public int getCount() {
         return count;
     }
 
@@ -63,14 +63,17 @@ public class StateOfGumballMachine {
         }
     }
 
+    @Override
     public void insertQuarter() {
         state.insertQuarter();
     }
 
+    @Override
     public void ejectQuarter() {
         state.ejectQuarter();
     }
 
+    @Override
     public void turnCrank() {
         state.turnCrank();
         state.dispense();

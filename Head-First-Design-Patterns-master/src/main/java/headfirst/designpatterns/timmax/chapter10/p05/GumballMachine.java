@@ -1,97 +1,34 @@
 package headfirst.designpatterns.timmax.chapter10.p05;
 
 public class GumballMachine {
- 
-	State soldOutState;
-	State noQuarterState;
-	State hasQuarterState;
-	State soldState;
-	State winnerState;
- 
-	State state = soldOutState;
-	int count;
- 
+	StateOfGumballMachine stateOfGumballMachine;
+
 	public GumballMachine(int numberGumballs) {
-		soldOutState = new SoldOutState(this);
-		noQuarterState = new NoQuarterState(this);
-		hasQuarterState = new HasQuarterState(this);
-		soldState = new SoldState(this);
-		winnerState = new WinnerState(this);
-
-		this.count = numberGumballs;
- 		if (numberGumballs > 0) {
-			state = noQuarterState;
-		} 
+		stateOfGumballMachine = new StateOfGumballMachine(numberGumballs);
 	}
- 
+
 	public void insertQuarter() {
-		state.insertQuarter();
+		stateOfGumballMachine.insertQuarter();
 	}
- 
+
 	public void ejectQuarter() {
-		state.ejectQuarter();
+		stateOfGumballMachine.ejectQuarter();
 	}
- 
+
 	public void turnCrank() {
-		state.turnCrank();
-		state.dispense();
+		stateOfGumballMachine.turnCrank();
 	}
 
-	void setState(State state) {
-		this.state = state;
-	}
- 
-	void releaseBall() {
-		System.out.println("A gumball comes rolling out the slot...");
-		if (count > 0) {
-			count = count - 1;
-		}
-	}
- 
-	int getCount() {
-		return count;
-	}
- 
-	void refill(int count) {
-		this.count += count;
-		System.out.println("The gumball machine was just refilled; its new count is: " + this.count);
-		state.refill();
-	}
-
-    public State getState() {
-        return state;
-    }
-
-    public State getSoldOutState() {
-        return soldOutState;
-    }
-
-    public State getNoQuarterState() {
-        return noQuarterState;
-    }
-
-    public State getHasQuarterState() {
-        return hasQuarterState;
-    }
-
-    public State getSoldState() {
-        return soldState;
-    }
-
-    public State getWinnerState() {
-        return winnerState;
-    }
- 
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		result.append("\nMighty Gumball, Inc.");
-		result.append("\nJava-enabled Standing Gumball Model #2004");
-		result.append("\nInventory: ").append(count).append(" gumball");
-		if (count != 1) {
+		result.append("Mighty Gumball, Inc.\n");
+		result.append("Java-enabled Standing Gumball Model #2004\n");
+		result.append("Inventory: ").append(stateOfGumballMachine.getCount()).append(" gumball");
+		if (stateOfGumballMachine.getCount() != 1) {
 			result.append("s");
 		}
 		result.append("\n");
-		result.append("Machine is ").append(state).append("\n");
+		result.append("Machine is ").append(stateOfGumballMachine.getCount()).append("\n");
 		return result.toString();
 	}
 }

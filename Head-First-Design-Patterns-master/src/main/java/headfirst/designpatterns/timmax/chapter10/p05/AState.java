@@ -1,9 +1,9 @@
 package headfirst.designpatterns.timmax.chapter10.p05;
 
 public abstract class AState implements State {
-    protected final GumballMachine gumballMachine;
+    protected StateOfGumballMachine stateOfGumballMachine;
 
-    public AState(GumballMachine gumballMachine) {
-        this.gumballMachine = gumballMachine;
+    public AState(StateOfGumballMachine stateOfGumballMachine) {
+        this.stateOfGumballMachine = stateOfGumballMachine;
     }
 }

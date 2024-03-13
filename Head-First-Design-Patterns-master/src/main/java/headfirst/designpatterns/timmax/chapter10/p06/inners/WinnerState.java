@@ -1,4 +1,4 @@
-package headfirst.designpatterns.timmax.chapter10.p06;
+package headfirst.designpatterns.timmax.chapter10.p06.inners;
 
 public class WinnerState extends AState {
 	public WinnerState(StateOfGumballMachine stateOfGumballMachine) {
@@ -42,6 +42,6 @@ public class WinnerState extends AState {
 
 	@Override
 	public String toString() {
-		return "despensing two gumballs for your quarter, because YOU'RE A WINNER!";
+		return "dispensing two gumballs for your quarter, because YOU'RE A WINNER!";
 	}
 }

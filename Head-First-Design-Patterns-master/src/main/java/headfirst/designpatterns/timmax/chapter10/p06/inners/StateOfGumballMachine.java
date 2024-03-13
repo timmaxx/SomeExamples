@@ -1,15 +1,16 @@
-package headfirst.designpatterns.timmax.chapter10.p06;
+package headfirst.designpatterns.timmax.chapter10.p06.inners;
+
+import headfirst.designpatterns.timmax.chapter10.p06.State;
 
 public class StateOfGumballMachine implements State {
-    StateProtected soldOutState;
-    StateProtected noQuarterState;
-    StateProtected hasQuarterState;
-    StateProtected soldState;
-    StateProtected winnerState;
+    private final StateProtected soldOutState;
+    private final StateProtected noQuarterState;
+    private final StateProtected hasQuarterState;
+    private final StateProtected soldState;
+    private final StateProtected winnerState;
 
-    StateProtected state = soldOutState;
-
-    int count;
+    private StateProtected state;
+    private int count;
 
     public StateOfGumballMachine(int numberGumballs) {
         soldOutState = new SoldOutState(this);
@@ -17,10 +18,11 @@ public class StateOfGumballMachine implements State {
         hasQuarterState = new HasQuarterState(this);
         soldState = new SoldState(this);
         winnerState = new WinnerState(this);
-
-        this.count = numberGumballs;
+        count = numberGumballs;
         if (numberGumballs > 0) {
             state = noQuarterState;
+        } else {
+            state = soldOutState;
         }
     }
 
@@ -52,14 +54,14 @@ public class StateOfGumballMachine implements State {
         return winnerState;
     }
 
-    public int getCount() {
+    protected int getCount() {
         return count;
     }
 
     protected void releaseBall() {
         System.out.println("A gumball comes rolling out the slot...");
         if (count > 0) {
-            count = count - 1;
+            count--;
         }
     }
 
@@ -77,5 +79,18 @@ public class StateOfGumballMachine implements State {
     public void turnCrank() {
         state.turnCrank();
         state.dispense();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("Mighty Gumball, Inc. Java-enabled Standing Gumball Model #2004\n");
+        result.append("Inventory: ").append(count).append(" gumball");
+        if (getCount() != 1) {
+            result.append("s");
+        }
+        result.append("\n");
+        result.append("Machine is ").append(state).append("\n");
+        return result.toString();
     }
 }

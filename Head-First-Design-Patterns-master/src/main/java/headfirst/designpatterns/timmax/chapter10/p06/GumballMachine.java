@@ -1,7 +1,9 @@
 package headfirst.designpatterns.timmax.chapter10.p06;
 
+import headfirst.designpatterns.timmax.chapter10.p06.inners.StateOfGumballMachine;
+
 public class GumballMachine implements State {
-	private StateOfGumballMachine stateOfGumballMachine;
+	private final State stateOfGumballMachine;
 
 	public GumballMachine(int numberGumballs) {
 		stateOfGumballMachine = new StateOfGumballMachine(numberGumballs);
@@ -24,15 +26,6 @@ public class GumballMachine implements State {
 
 	@Override
 	public String toString() {
-		StringBuilder result = new StringBuilder();
-		result.append("Mighty Gumball, Inc.\n");
-		result.append("Java-enabled Standing Gumball Model #2004\n");
-		result.append("Inventory: ").append(stateOfGumballMachine.getCount()).append(" gumball");
-		if (stateOfGumballMachine.getCount() != 1) {
-			result.append("s");
-		}
-		result.append("\n");
-		result.append("Machine is ").append(stateOfGumballMachine.getCount()).append("\n");
-		return result.toString();
+		return stateOfGumballMachine.toString();
 	}
 }

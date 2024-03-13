@@ -1,4 +1,4 @@
-package headfirst.designpatterns.timmax.chapter10.p06;
+package headfirst.designpatterns.timmax.chapter10.p06.inners;
 
 public class SoldOutState extends AState {
 	public SoldOutState(StateOfGumballMachine stateOfGumballMachine) {

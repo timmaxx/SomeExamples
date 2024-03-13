@@ -1,9 +1,9 @@
-package headfirst.designpatterns.timmax.chapter10.p06;
+package headfirst.designpatterns.timmax.chapter10.p06.inners;
 
 import java.util.Random;
 
 public class HasQuarterState extends AState {
-	Random randomWinner = new Random(System.currentTimeMillis());
+	private final Random randomWinner = new Random(System.currentTimeMillis());
 
 	public HasQuarterState(StateOfGumballMachine stateOfGumballMachine) {
 		super(stateOfGumballMachine);

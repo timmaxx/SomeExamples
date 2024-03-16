@@ -1,86 +1,84 @@
 package headfirst.designpatterns.timmax.chapter10.p06.inners;
 
-import headfirst.designpatterns.timmax.chapter10.p06.State;
+import headfirst.designpatterns.timmax.chapter10.p06.IState;
 
-public class StateOfGumballMachine implements State {
-    private final StateProtected soldOutState;
-    private final StateProtected noQuarterState;
-    private final StateProtected hasQuarterState;
-    private final StateProtected soldState;
-    private final StateProtected winnerState;
+public class StateOfGumballMachine implements IState {
+    private final IStateProtected iSPSoldOut;
+    private final IStateProtected iSPNoQuarter;
+    private final IStateProtected iSPHasQuarter;
+    private final IStateProtected iSPSold;
+    private final IStateProtected iSPWinner;
 
-    private StateProtected state;
+    private IStateProtected iSPCurrent;
     private int count;
 
     public StateOfGumballMachine(int numberGumballs) {
-        soldOutState = new SoldOutState(this);
-        noQuarterState = new NoQuarterState(this);
-        hasQuarterState = new HasQuarterState(this);
-        soldState = new SoldState(this);
-        winnerState = new WinnerState(this);
+        iSPSoldOut = new SPSoldOut(this);
+        iSPNoQuarter = new SPNoQuarter(this);
+        iSPHasQuarter = new SPHasQuarter(this);
+        iSPSold = new SPSold(this);
+        iSPWinner = new SPWinner(this);
         count = numberGumballs;
         if (numberGumballs > 0) {
-            state = noQuarterState;
+            iSPCurrent = iSPNoQuarter;
         } else {
-            state = soldOutState;
+            iSPCurrent = iSPSoldOut;
         }
     }
 
-    protected StateProtected getState() {
-        return state;
+    void setISPCurrent(IStateProtected iSPCurrent) {
+        this.iSPCurrent = iSPCurrent;
     }
 
-    protected void setState(StateProtected state) {
-        this.state = state;
+    IStateProtected getISPSoldOut() {
+        return iSPSoldOut;
     }
 
-    protected StateProtected getSoldOutState() {
-        return soldOutState;
+    IStateProtected getIStateProtectedNoQuarter() {
+        return iSPNoQuarter;
     }
 
-    protected StateProtected getNoQuarterState() {
-        return noQuarterState;
+    IStateProtected getISPHasQuarter() {
+        return iSPHasQuarter;
     }
 
-    protected StateProtected getHasQuarterState() {
-        return hasQuarterState;
+    IStateProtected getISPSold() {
+        return iSPSold;
     }
 
-    protected StateProtected getSoldState() {
-        return soldState;
+    IStateProtected getISPWinner() {
+        return iSPWinner;
     }
 
-    protected StateProtected getWinnerState() {
-        return winnerState;
-    }
-
-    protected int getCount() {
+    int getCount() {
         return count;
     }
 
-    protected void releaseBall() {
+    void releaseBall() {
         System.out.println("A gumball comes rolling out the slot...");
         if (count > 0) {
             count--;
         }
     }
 
+    // Implemented methods of interface IState:
     @Override
     public void insertQuarter() {
-        state.insertQuarter();
+        iSPCurrent.insertQuarter();
     }
 
     @Override
     public void ejectQuarter() {
-        state.ejectQuarter();
+        iSPCurrent.ejectQuarter();
     }
 
     @Override
     public void turnCrank() {
-        state.turnCrank();
-        state.dispense();
+        iSPCurrent.turnCrank();
+        iSPCurrent.dispense();
     }
 
+    // Overridden methods of class Object:
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
@@ -90,7 +88,7 @@ public class StateOfGumballMachine implements State {
             result.append("s");
         }
         result.append("\n");
-        result.append("Machine is ").append(state).append("\n");
+        result.append("Machine is ").append(iSPCurrent).append("\n");
         return result.toString();
     }
 }

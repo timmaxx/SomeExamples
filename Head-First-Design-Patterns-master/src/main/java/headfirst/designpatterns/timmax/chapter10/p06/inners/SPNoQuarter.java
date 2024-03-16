@@ -1,14 +1,24 @@
 package headfirst.designpatterns.timmax.chapter10.p06.inners;
 
-public class NoQuarterState extends AState {
-	public NoQuarterState(StateOfGumballMachine stateOfGumballMachine) {
+public class SPNoQuarter extends AStateProtected {
+	public SPNoQuarter(StateOfGumballMachine stateOfGumballMachine) {
 		super(stateOfGumballMachine);
 	}
 
+	// Implemented methods of interface IStateProtected:
+	@Override
+	public void dispense() {
+		System.out.println("You need to pay first");
+	}
+
+	@Override
+	public void refill() { }
+
+	// Implemented methods of interface IState:
 	@Override
 	public void insertQuarter() {
 		System.out.println("You inserted a quarter");
-		stateOfGumballMachine.setState(stateOfGumballMachine.getHasQuarterState());
+		stateOfGumballMachine.setISPCurrent(stateOfGumballMachine.getISPHasQuarter());
 	}
 
 	@Override
@@ -21,14 +31,7 @@ public class NoQuarterState extends AState {
 		System.out.println("You turned, but there's no quarter");
 	}
 
-	@Override
-	public void dispense() {
-		System.out.println("You need to pay first");
-	}
-
-	@Override
-	public void refill() { }
-
+	// Overridden methods of class Object:
 	@Override
 	public String toString() {
 		return "waiting for quarter";

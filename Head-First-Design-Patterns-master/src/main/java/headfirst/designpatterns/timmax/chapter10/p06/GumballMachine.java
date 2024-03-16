@@ -2,30 +2,32 @@ package headfirst.designpatterns.timmax.chapter10.p06;
 
 import headfirst.designpatterns.timmax.chapter10.p06.inners.StateOfGumballMachine;
 
-public class GumballMachine implements State {
-	private final State stateOfGumballMachine;
+public class GumballMachine implements IState {
+	private final IState iState;
 
 	public GumballMachine(int numberGumballs) {
-		stateOfGumballMachine = new StateOfGumballMachine(numberGumballs);
+		iState = new StateOfGumballMachine(numberGumballs);
 	}
 
+	// Implemented methods of interface IState:
 	@Override
 	public void insertQuarter() {
-		stateOfGumballMachine.insertQuarter();
+		iState.insertQuarter();
 	}
 
 	@Override
 	public void ejectQuarter() {
-		stateOfGumballMachine.ejectQuarter();
+		iState.ejectQuarter();
 	}
 
 	@Override
 	public void turnCrank() {
-		stateOfGumballMachine.turnCrank();
+		iState.turnCrank();
 	}
 
+	// Overridden methods of class Object:
 	@Override
 	public String toString() {
-		return stateOfGumballMachine.toString();
+		return iState.toString();
 	}
 }

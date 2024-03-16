@@ -6,4 +6,8 @@ public abstract class AStateProtected implements IStateProtected {
     public AStateProtected(StateOfGumballMachine stateOfGumballMachine) {
         this.stateOfGumballMachine = stateOfGumballMachine;
     }
+
+    public void setAsCurrent() {
+        stateOfGumballMachine.setISPCurrent(this);
+    }
 }

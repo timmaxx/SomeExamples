@@ -10,10 +10,10 @@ public class SPSold extends AStateProtected {
 	public void dispense() {
 		stateOfGumballMachine.releaseBall();
 		if (stateOfGumballMachine.getCount() > 0) {
-			stateOfGumballMachine.setISPCurrent(stateOfGumballMachine.getIStateProtectedNoQuarter());
+			stateOfGumballMachine.getIStateProtectedNoQuarter().setAsCurrent();
 		} else {
 			System.out.println("Oops, out of gumballs!");
-			stateOfGumballMachine.setISPCurrent(stateOfGumballMachine.getISPSoldOut());
+			stateOfGumballMachine.getISPSoldOut().setAsCurrent();
 		}
 	}
 

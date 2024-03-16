@@ -27,7 +27,7 @@ public class SPHasQuarter extends AStateProtected {
 	@Override
 	public void ejectQuarter() {
 		System.out.println("Quarter returned");
-		stateOfGumballMachine.setISPCurrent(stateOfGumballMachine.getIStateProtectedNoQuarter());
+		stateOfGumballMachine.getIStateProtectedNoQuarter().setAsCurrent();
 	}
 
 	@Override
@@ -35,9 +35,9 @@ public class SPHasQuarter extends AStateProtected {
 		System.out.println("You turned...");
 		int winner = randomWinner.nextInt(10);
 		if ((winner == 0) && (stateOfGumballMachine.getCount() > 1)) {
-			stateOfGumballMachine.setISPCurrent(stateOfGumballMachine.getISPWinner());
+			stateOfGumballMachine.getISPWinner().setAsCurrent();
 		} else {
-			stateOfGumballMachine.setISPCurrent(stateOfGumballMachine.getISPSold());
+			stateOfGumballMachine.getISPSold().setAsCurrent();
 		}
 	}
 

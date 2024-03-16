@@ -13,7 +13,7 @@ public class SPSoldOut extends AStateProtected {
 
 	@Override
 	public void refill() {
-		stateOfGumballMachine.setISPCurrent(stateOfGumballMachine.getIStateProtectedNoQuarter());
+		stateOfGumballMachine.getIStateProtectedNoQuarter().setAsCurrent();
 	}
 
 	// Implemented methods of interface IState:

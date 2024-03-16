@@ -18,7 +18,7 @@ public class SPNoQuarter extends AStateProtected {
 	@Override
 	public void insertQuarter() {
 		System.out.println("You inserted a quarter");
-		stateOfGumballMachine.setISPCurrent(stateOfGumballMachine.getISPHasQuarter());
+		stateOfGumballMachine.getISPHasQuarter().setAsCurrent();
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p07.common.state;
 
-public class StateContext implements State {
+public class StateContext implements IStateContext {
     AState currentState;
 
     public StateContext(AState currentState) {
@@ -8,17 +8,17 @@ public class StateContext implements State {
     }
 
     @Override
-    public void changeState(AState aState) {
+    public final void changeState(AState aState) {
         currentState.changeState(aState);
     }
 
     @Override
-    public void changeState(AState aState, StateData stateData) {
+    public final void changeState(AState aState, StateData stateData) {
         currentState.changeState(aState, stateData);
     }
 
     @Override
-    public StateData getData() {
+    public final StateData getData() {
         return currentState.getData();
     }
 }

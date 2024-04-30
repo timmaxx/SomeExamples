@@ -5,9 +5,10 @@ import java.util.Set;
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p07.common.classes.Classes;
 
-public abstract class AState implements State {
+public abstract class AState implements IStateContext {
     private final StateContext stateContext;
     private final Class<? extends StateData> stateDataClass;
+
     protected final Set<PairDestStateAndCanSwitchWithoutParams> setOfPairDestStateAndCanSwitchWithoutParams;
 
     protected StateData stateData;
@@ -18,15 +19,15 @@ public abstract class AState implements State {
         this.setOfPairDestStateAndCanSwitchWithoutParams = new HashSet<>();
     }
 
-    public void checkPosibleToChangeState(State state, boolean isThereStateData) {
+    private void checkPosibleToChangeState(AState aState, boolean isThereStateData) {
         for (PairDestStateAndCanSwitchWithoutParams pairDestStateAndCanSwitchWithoutParams : setOfPairDestStateAndCanSwitchWithoutParams) {
-            if (Classes.isInstanceOf(state, pairDestStateAndCanSwitchWithoutParams.destinationStateClass())
+            if (Classes.isInstanceOf(aState, pairDestStateAndCanSwitchWithoutParams.destinationStateClass())
                     && !isThereStateData
                     && pairDestStateAndCanSwitchWithoutParams.canSwitchWithoutParams()) {
                 return;
             }
         }
-        throw new RuntimeException("You cannot change state from '" + this + "' to '" + state + "'!");
+        throw new RuntimeException("You cannot change state from '" + this + "' to '" + aState + "'!");
     }
 
     private void setData(StateData stateData) {
@@ -43,25 +44,22 @@ public abstract class AState implements State {
         stateContext.currentState = this;
     }
 
-    public StateContext getStateContext() {
-        return stateContext;
-    }
-
+    // Implemented methods of interface IStateContext
     @Override
-    public void changeState(AState aState) {
+    public final void changeState(AState aState) {
         checkPosibleToChangeState(aState, false);
         aState.setAsCurrent();
     }
 
     @Override
-    public void changeState(AState aState, StateData stateData) {
+    public final void changeState(AState aState, StateData stateData) {
         checkPosibleToChangeState(aState, true);
         aState.setData(stateData);
         aState.setAsCurrent();
     }
 
     @Override
-    public StateData getData() {
+    public final StateData getData() {
         return stateData;
     }
 }

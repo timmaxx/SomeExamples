@@ -1,4 +1,4 @@
-package headfirst.designpatterns.timmax.chapter10.timmax.common.classes;
+package headfirst.designpatterns.timmax.chapter10.timmax.p07.common.classes;
 
 public class Classes {
     //  Метод isInstanceOf можно использовать там, где не получается использовать оператор instanceof.

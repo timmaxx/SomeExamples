@@ -1,4 +1,4 @@
-package headfirst.designpatterns.timmax.chapter10.timmax.common.state;
+package headfirst.designpatterns.timmax.chapter10.timmax.p07.common.state;
 
 public interface State {
     void changeState(AState aState);

@@ -1,9 +1,9 @@
-package headfirst.designpatterns.timmax.chapter10.timmax.common.state;
+package headfirst.designpatterns.timmax.chapter10.timmax.p07.common.state;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.common.classes.Classes;
+import headfirst.designpatterns.timmax.chapter10.timmax.p07.common.classes.Classes;
 
 public abstract class AState implements State {
     private final StateContext stateContext;

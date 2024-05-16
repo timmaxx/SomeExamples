@@ -1,25 +1,33 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p08.common.state;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p08.common.classes.Classes;
-
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class AState implements IStateContext {
-    private final StateContext stateContext;
-    private final Class<? extends StateData> stateDataClass;
+import headfirst.designpatterns.timmax.chapter10.timmax.p08.common.classes.Classes;
+
+public abstract class AState<StateData> implements IStateContext<StateData> {
+    private final StateContext<StateData> stateContext;
+    private final Class<StateData> stateDataClass;
 
     protected final Set<PairDestStateAndCanSwitchWithoutParams> setOfPairDestStateAndCanSwitchWithoutParams;
 
     protected StateData stateData;
 
-    public AState(StateContext stateContext, Class<? extends StateData> stateDataClass) {
+    public AState(StateContext<StateData> stateContext, Class<StateData> stateDataClass) {
         this.stateContext = stateContext;
         this.stateDataClass = stateDataClass;
         this.setOfPairDestStateAndCanSwitchWithoutParams = new HashSet<>();
     }
 
-    private void checkPosibleToChangeState(AState aState, boolean isThereStateData) {
+    public StateContext<StateData> getStateContext() {
+        return stateContext;
+    }
+
+    private void setAsCurrent() {
+        stateContext.setCurrentState(this);
+    }
+
+    private void checkPosibleToChangeState(AState<StateData> aState, boolean isThereStateData) {
         for (PairDestStateAndCanSwitchWithoutParams pairDestStateAndCanSwitchWithoutParams : setOfPairDestStateAndCanSwitchWithoutParams) {
             if (Classes.isInstanceOf(aState, pairDestStateAndCanSwitchWithoutParams.destinationStateClass())
                     && !isThereStateData
@@ -30,7 +38,13 @@ public abstract class AState implements IStateContext {
         throw new RuntimeException("You cannot change state from '" + this + "' to '" + aState + "'!");
     }
 
-    private void setData(StateData stateData) {
+    @Override
+    public final StateData getData() {
+        return stateData;
+    }
+
+    @Override
+    public void setData(StateData stateData) {
         if (stateData == null) {
             throw new RuntimeException("Data for state '" + this + "' is null!");
         }
@@ -40,26 +54,17 @@ public abstract class AState implements IStateContext {
         this.stateData = stateData;
     }
 
-    private void setAsCurrent() {
-        stateContext.currentState = this;
-    }
-
     // Implemented methods of interface IStateContext
     @Override
-    public final void changeState(AState aState) {
+    public final void changeState(AState<StateData> aState) {
         checkPosibleToChangeState(aState, false);
         aState.setAsCurrent();
     }
 
     @Override
-    public final void changeState(AState aState, StateData stateData) {
+    public final void changeState(AState<StateData> aState, StateData stateData) {
         checkPosibleToChangeState(aState, true);
         aState.setData(stateData);
         aState.setAsCurrent();
-    }
-
-    @Override
-    public final StateData getData() {
-        return stateData;
     }
 }

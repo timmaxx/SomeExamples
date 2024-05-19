@@ -4,6 +4,13 @@ public interface IStateOfGumballMachine {
 	void insertQuarter();
 	void ejectQuarter();
 	void turnCrank();
+
 	// ToDo: поскольку монеты копятся, то нужно делать их выемку с распечаткой отчёта.
 	//       Но выемка должна быть доступна только инкассаторам...
+	// 1. выемка денег
+
+	// 2. выемка остатков гумболов.
+
+	// 3. заправка гумболами.
+	void refill();
 }

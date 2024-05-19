@@ -3,8 +3,8 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09;
 public class GumballMachine implements IStateOfGumballMachine {
 	private final GumballMachineStateContext stateContext;
 
-	public GumballMachine(int numberGumballs) {
-		stateContext = new GumballMachineStateContext(numberGumballs);
+	public GumballMachine() {
+		stateContext = new GumballMachineStateContext();
 	}
 
 	// Implemented methods of interface IStateOfGumballMachine:
@@ -21,6 +21,11 @@ public class GumballMachine implements IStateOfGumballMachine {
 	@Override
 	public void turnCrank() {
 		stateContext.turnCrank();
+	}
+
+	@Override
+	public void refill() {
+		stateContext.refill();
 	}
 
 	// Overridden methods of class Object:

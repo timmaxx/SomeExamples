@@ -4,6 +4,8 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDes
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
 public class SPNoQuarter extends AGumballMachineState<Integer> implements IStateOfGumballMachineProtected {
+    public static int MAX_OF_GUMBALLS = 10;
+
     public SPNoQuarter(StateContext stateContext) {
         super(stateContext, Integer.class);
         setOfPairDestStateAndCanSwitchWithoutParams.add(

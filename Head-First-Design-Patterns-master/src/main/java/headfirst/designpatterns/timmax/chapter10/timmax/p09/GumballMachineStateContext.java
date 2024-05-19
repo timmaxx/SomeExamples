@@ -10,24 +10,15 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
     private final SPSoldOut spSoldOut;
     private final SPWinner spWinner;
 
-    // ToDo: убрать из конструктора int numberGumballs и отдельно вызывать refill()
-    public GumballMachineStateContext(int numberGumballs) {
-        if (numberGumballs < 0) {
-            throw new RuntimeException("Number of gumballs must be 0 or more!");
-        }
-
+    public GumballMachineStateContext() {
         spNoQuarter = new SPNoQuarter(this);
         spHasQuarter = new SPHasQuarter(this);
         spSold = new SPSold(this);
         spSoldOut = new SPSoldOut(this);
         spWinner = new SPWinner(this);
 
-        if (numberGumballs > 0) {
-            setCurrentState(spNoQuarter);
-        } else {
-            setCurrentState(spSoldOut);
-        }
-        spNoQuarter.setNumberGumballs(numberGumballs);
+        setCurrentState(spSoldOut);
+        spNoQuarter.setNumberGumballs(0);
     }
 
     public SPHasQuarter getSpHasQuarter() {
@@ -78,6 +69,11 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
     public void turnCrank() {
         getCurrentState().turnCrank();
         getCurrentState().dispense();
+    }
+
+    @Override
+    public void refill() {
+        getCurrentState().refill();
     }
 
     // Overridden methods of class Object:

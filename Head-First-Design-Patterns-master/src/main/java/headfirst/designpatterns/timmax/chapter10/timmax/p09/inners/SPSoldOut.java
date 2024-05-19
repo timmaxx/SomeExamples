@@ -2,16 +2,18 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 
 import javax.lang.model.type.NullType;
 
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
+
+import static headfirst.designpatterns.timmax.chapter10.timmax.p09.inners.SPNoQuarter.MAX_OF_GUMBALLS;
 
 public class SPSoldOut extends AGumballMachineState<NullType> implements IStateOfGumballMachineProtected {
     public SPSoldOut(StateContext stateContext) {
         super(stateContext, null);
-/*		// Такой вариант не описан на стр. 442, но должен быть...
+		// Такой вариант не описан на стр. 442, но должен быть...
 		setOfPairDestStateAndCanSwitchWithoutParams.add(
-				new PairDestStateAndCanSwitchWithoutParams(SPHasQuarter.class, true)
+				new PairDestStateAndCanSwitchWithoutParams(SPNoQuarter.class, true)
 		);
-*/
     }
 
     // Implemented methods of interface IStateOfGumballMachineProtected:
@@ -22,7 +24,7 @@ public class SPSoldOut extends AGumballMachineState<NullType> implements IStateO
 
     @Override
     public void refill() {
-        // ToDo: Нужно ещё наполнить (т.е. увеличить счетчик гамболов)...
+        getStateContext().getSpNoQuarter().setNumberGumballs(MAX_OF_GUMBALLS);
         changeState(getStateContext().getSpNoQuarter());
     }
 

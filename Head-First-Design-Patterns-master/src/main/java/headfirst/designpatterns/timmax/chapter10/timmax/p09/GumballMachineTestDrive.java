@@ -8,6 +8,8 @@ public class GumballMachineTestDrive {
 		gumballMachine.refill();
 		System.out.println(gumballMachine + "\n");
 
+		gumballMachine.turnCrank();
+
 		gumballMachine.insertQuarter();
 		gumballMachine.turnCrank();
 		gumballMachine.insertQuarter();

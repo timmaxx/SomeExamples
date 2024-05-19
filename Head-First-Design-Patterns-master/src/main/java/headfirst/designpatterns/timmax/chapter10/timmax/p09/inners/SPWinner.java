@@ -22,7 +22,6 @@ public class SPWinner extends AGumballMachineState<NullType> implements IStateOf
     public void dispense() {
         getStateContext().releaseBall();
         if (getNumberGumballs() == 0) {
-            System.out.println("Oops, out of gumballs!");
             changeState(getStateContext().getSpSoldOut());
             return;
         }
@@ -32,7 +31,6 @@ public class SPWinner extends AGumballMachineState<NullType> implements IStateOf
         if (getNumberGumballs() > 0) {
             changeState(getStateContext().getSpNoQuarter());
         } else {
-            System.out.println("Oops, out of gumballs!");
             changeState(getStateContext().getSpSoldOut());
         }
     }

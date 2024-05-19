@@ -69,4 +69,8 @@ public abstract class AState<StateData> implements IState<StateData> {
         aState.setData(stateData);
         aState.setAsCurrent();
     }
+
+    public void doOnEnter() {
+        System.out.println("Machine has entered into state '" + this + "'");
+    }
 }

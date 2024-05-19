@@ -9,6 +9,7 @@ public abstract class StateContext implements IStateContext {
 
     public <StateData> void setCurrentState(AState<StateData> currentState) {
         this.currentState = currentState;
+        currentState.doOnEnter();
     }
 
     @Override
@@ -17,7 +18,7 @@ public abstract class StateContext implements IStateContext {
     }
 
     @Override
-    public <TargetStateData> void changeState(AState<TargetStateData> aState, TargetStateData targetStateData) {
+    public final <TargetStateData> void changeState(AState<TargetStateData> aState, TargetStateData targetStateData) {
         currentState.changeState(aState, targetStateData);
     }
 }

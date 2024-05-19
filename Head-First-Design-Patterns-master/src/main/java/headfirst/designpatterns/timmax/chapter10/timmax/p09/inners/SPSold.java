@@ -23,7 +23,6 @@ public class SPSold extends AGumballMachineState<NullType> implements IStateOfGu
         if (getNumberGumballs() > 0) {
             changeState(getStateContext().getSpNoQuarter());
         } else {
-            System.out.println("Oops, out of gumballs!");
             changeState(getStateContext().getSpSoldOut());
         }
     }

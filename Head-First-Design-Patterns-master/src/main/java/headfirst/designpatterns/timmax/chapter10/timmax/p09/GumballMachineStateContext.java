@@ -1,6 +1,5 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.inners.*;
 
@@ -31,37 +30,37 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         spNoQuarter.setNumberGumballs(numberGumballs);
     }
 
-    public AState getSpHasQuarter() {
+    public SPHasQuarter getSpHasQuarter() {
         return spHasQuarter;
     }
 
-    public AState getSpNoQuarter() {
+    public SPNoQuarter getSpNoQuarter() {
         return spNoQuarter;
     }
 
-    public AState getSpSold() {
+    public SPSold getSpSold() {
         return spSold;
     }
 
-    public AState getSpSoldOut() {
+    public SPSoldOut getSpSoldOut() {
         return spSoldOut;
     }
 
-    public AState getSpWinner() {
+    public SPWinner getSpWinner() {
         return spWinner;
     }
 
     public void releaseBall() {
         System.out.println("A gumball comes rolling out the slot...");
-        int numberGumballs = (Integer)(getSpNoQuarter().getData());
+        Integer numberGumballs = getSpNoQuarter().getData();
         if (numberGumballs > 0) {
-            getSpNoQuarter().setData(numberGumballs - 1);
+            getSpNoQuarter().setData((numberGumballs - 1));
         }
     }
 
     @Override
-    public AGumballMachineState getCurrentState() {
-        return (AGumballMachineState) super.getCurrentState();
+    public AGumballMachineState<?> getCurrentState() {
+        return (AGumballMachineState<?>) super.getCurrentState();
     }
 
     // Implemented methods of interface IStateOfGumballMachine:

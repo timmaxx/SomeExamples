@@ -1,9 +1,10 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.IStateOfGumballMachine;
+import javax.lang.model.type.NullType;
+
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class SPSoldOut extends AGumballMachineState implements IStateOfGumballMachine, IStateOfGumballMachineProtected {
+public class SPSoldOut extends AGumballMachineState<NullType> implements IStateOfGumballMachineProtected {
     public SPSoldOut(StateContext stateContext) {
         super(stateContext, null);
 /*		// Такой вариант не описан на стр. 442, но должен быть...

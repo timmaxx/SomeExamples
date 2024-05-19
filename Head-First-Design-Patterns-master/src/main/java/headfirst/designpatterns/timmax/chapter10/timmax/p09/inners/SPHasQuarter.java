@@ -1,12 +1,12 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 
+import javax.lang.model.type.NullType;
 import java.util.Random;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.IStateOfGumballMachine;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class SPHasQuarter extends AGumballMachineState implements IStateOfGumballMachine, IStateOfGumballMachineProtected {
+public class SPHasQuarter extends AGumballMachineState<NullType> implements IStateOfGumballMachineProtected {
     private final Random randomWinner = new Random(System.currentTimeMillis());
 
     public SPHasQuarter(StateContext stateContext) {

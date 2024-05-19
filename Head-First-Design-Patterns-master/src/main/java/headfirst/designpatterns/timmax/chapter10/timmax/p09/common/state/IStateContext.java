@@ -1,8 +1,7 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state;
 
-public interface IStateContext<StateData> {
-    void changeState(AState<StateData> aState);
-    void changeState(AState<StateData> aState, StateData stateData);
-    StateData getData();
-    void setData(StateData stateData);
+public interface IStateContext {
+    <TargetStateData> void changeState(AState<TargetStateData> aState);
+    // ToDo: Удалить.
+    <TargetStateData> void changeState(AState<TargetStateData> aState, TargetStateData stateData);
 }

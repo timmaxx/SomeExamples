@@ -1,10 +1,9 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.IStateOfGumballMachine;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class SPNoQuarter extends AGumballMachineState implements IStateOfGumballMachine, IStateOfGumballMachineProtected {
+public class SPNoQuarter extends AGumballMachineState<Integer> implements IStateOfGumballMachineProtected {
     public SPNoQuarter(StateContext stateContext) {
         super(stateContext, Integer.class);
         setOfPairDestStateAndCanSwitchWithoutParams.add(

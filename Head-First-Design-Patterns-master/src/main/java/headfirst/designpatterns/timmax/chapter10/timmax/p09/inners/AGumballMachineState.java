@@ -5,15 +5,15 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.IStateOfGumballMachi
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public abstract class AGumballMachineState extends AState implements IStateOfGumballMachine {
-    public AGumballMachineState(StateContext stateContext, Class<?> stateDataClass) {
+public abstract class AGumballMachineState<StateData> extends AState<StateData> implements IStateOfGumballMachine {
+    public AGumballMachineState(StateContext stateContext, Class<StateData> stateDataClass) {
         super(stateContext, stateDataClass);
     }
 
     public abstract void dispense();
 
     public final int getNumberGumballs() {
-        return (Integer) getStateContext().getSpNoQuarter().getData();
+        return getStateContext().getSpNoQuarter().getData();
     }
 
     @Override

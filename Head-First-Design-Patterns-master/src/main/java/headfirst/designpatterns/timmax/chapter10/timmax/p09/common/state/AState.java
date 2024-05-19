@@ -5,21 +5,21 @@ import java.util.Set;
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.classes.Classes;
 
-public abstract class AState<StateData> implements IStateContext<StateData> {
-    private final StateContext<StateData> stateContext;
+public abstract class AState<StateData> implements IState<StateData> {
+    private final StateContext stateContext;
     private final Class<StateData> stateDataClass;
 
     protected final Set<PairDestStateAndCanSwitchWithoutParams> setOfPairDestStateAndCanSwitchWithoutParams;
 
     protected StateData stateData;
 
-    public AState(StateContext<StateData> stateContext, Class<StateData> stateDataClass) {
+    public AState(StateContext stateContext, Class<StateData> stateDataClass) {
         this.stateContext = stateContext;
         this.stateDataClass = stateDataClass;
         this.setOfPairDestStateAndCanSwitchWithoutParams = new HashSet<>();
     }
 
-    public StateContext<StateData> getStateContext() {
+    public StateContext getStateContext() {
         return stateContext;
     }
 
@@ -56,14 +56,16 @@ public abstract class AState<StateData> implements IStateContext<StateData> {
 
     // Implemented methods of interface IStateContext
     @Override
-    public final void changeState(AState<StateData> aState) {
-        checkPosibleToChangeState(aState, false);
+    public void changeState(AState<?> aState) {
+        // Warning:(61, 35) Unchecked cast: 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<capture<?>>' to 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<StateData>'
+        checkPosibleToChangeState((AState<StateData>) aState, false);
         aState.setAsCurrent();
     }
 
     @Override
-    public final void changeState(AState<StateData> aState, StateData stateData) {
-        checkPosibleToChangeState(aState, true);
+    public final <TargetStateData> void changeState(AState<TargetStateData> aState, TargetStateData stateData) {
+        // Warning:(68, 35) Unchecked cast: 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<TargetStateData>' to 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<StateData>'
+        checkPosibleToChangeState((AState<StateData>) aState, true);
         aState.setData(stateData);
         aState.setAsCurrent();
     }

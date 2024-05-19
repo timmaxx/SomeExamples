@@ -1,33 +1,23 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state;
 
-public abstract class StateContext<StateData> implements IStateContext<StateData> {
-    private AState<StateData> currentState;
+public abstract class StateContext implements IStateContext {
+    private AState<?> currentState;
 
-    public AState<StateData> getCurrentState() {
+    public AState<?> getCurrentState() {
         return currentState;
     }
 
-    public void setCurrentState(AState<StateData> currentState) {
+    public <StateData> void setCurrentState(AState<StateData> currentState) {
         this.currentState = currentState;
     }
 
     @Override
-    public final void changeState(AState<StateData> aState) {
+    public final <TargetStateData> void changeState(AState<TargetStateData> aState) {
         currentState.changeState(aState);
     }
 
     @Override
-    public final void changeState(AState<StateData> aState, StateData stateData) {
-        currentState.changeState(aState, stateData);
-    }
-
-    @Override
-    public final StateData getData() {
-        return currentState.getData();
-    }
-
-    @Override
-    public final void setData(StateData stateData) {
-        currentState.setData(stateData);
+    public <TargetStateData> void changeState(AState<TargetStateData> aState, TargetStateData targetStateData) {
+        currentState.changeState(aState, targetStateData);
     }
 }

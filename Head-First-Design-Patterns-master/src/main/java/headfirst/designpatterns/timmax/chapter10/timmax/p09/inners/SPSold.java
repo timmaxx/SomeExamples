@@ -1,10 +1,11 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.IStateOfGumballMachine;
+import javax.lang.model.type.NullType;
+
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class SPSold extends AGumballMachineState implements IStateOfGumballMachine, IStateOfGumballMachineProtected {
+public class SPSold extends AGumballMachineState<NullType> implements IStateOfGumballMachineProtected {
     public SPSold(StateContext stateContext) {
         super(stateContext, null);
         setOfPairDestStateAndCanSwitchWithoutParams.add(

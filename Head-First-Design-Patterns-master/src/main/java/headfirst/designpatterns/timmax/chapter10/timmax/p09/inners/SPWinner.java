@@ -1,11 +1,12 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.IStateOfGumballMachine;
+import javax.lang.model.type.NullType;
+
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
 // Думаю, этот клас мог-бы стать наследником SPSold. И тогда дублирующийся код ушёл-бы в базовый класс.
-public class SPWinner extends AGumballMachineState implements IStateOfGumballMachine, IStateOfGumballMachineProtected {
+public class SPWinner extends AGumballMachineState<NullType> implements IStateOfGumballMachineProtected {
     public SPWinner(StateContext stateContext) {
         super(stateContext, null);
         setOfPairDestStateAndCanSwitchWithoutParams.add(

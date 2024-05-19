@@ -16,9 +16,4 @@ public abstract class StateContext implements IStateContext {
     public final <TargetStateData> void changeState(AState<TargetStateData> aState) {
         currentState.changeState(aState);
     }
-
-    @Override
-    public final <TargetStateData> void changeState(AState<TargetStateData> aState, TargetStateData targetStateData) {
-        currentState.changeState(aState, targetStateData);
-    }
 }

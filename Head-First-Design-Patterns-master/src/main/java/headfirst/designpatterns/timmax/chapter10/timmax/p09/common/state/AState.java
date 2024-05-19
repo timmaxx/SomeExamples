@@ -62,14 +62,6 @@ public abstract class AState<StateData> implements IState<StateData> {
         aState.setAsCurrent();
     }
 
-    @Override
-    public final <TargetStateData> void changeState(AState<TargetStateData> aState, TargetStateData stateData) {
-        // Warning:(68, 35) Unchecked cast: 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<TargetStateData>' to 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<StateData>'
-        checkPosibleToChangeState((AState<StateData>) aState, true);
-        aState.setData(stateData);
-        aState.setAsCurrent();
-    }
-
     public void doOnEnter() {
         System.out.println("Machine has entered into state '" + this + "'");
     }

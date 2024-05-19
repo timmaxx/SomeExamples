@@ -21,17 +21,19 @@ public class SPWinner extends AGumballMachineState<NullType> implements IStateOf
     @Override
     public void dispense() {
         getStateContext().releaseBall();
+        if (getNumberGumballs() == 0) {
+            System.out.println("Oops, out of gumballs!");
+            changeState(getStateContext().getSpSoldOut());
+            return;
+        }
+
+        getStateContext().releaseBall();
+        System.out.println("You're a winner! You got two gumballs for your quarter");
         if (getNumberGumballs() > 0) {
             changeState(getStateContext().getSpNoQuarter());
         } else {
-            getStateContext().releaseBall();
-            System.out.println("You're a winner! You got two gumballs for your quarter");
-            if (getNumberGumballs() > 0) {
-                changeState(getStateContext().getSpNoQuarter());
-            } else {
-                System.out.println("Oops, out of gumballs!");
-                changeState(getStateContext().getSpSoldOut());
-            }
+            System.out.println("Oops, out of gumballs!");
+            changeState(getStateContext().getSpSoldOut());
         }
     }
 

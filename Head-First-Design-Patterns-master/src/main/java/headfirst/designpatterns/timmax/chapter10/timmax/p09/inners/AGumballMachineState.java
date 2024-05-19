@@ -1,6 +1,5 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.GumballMachineStateContext;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.IStateOfGumballMachine;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;

@@ -1,7 +1,7 @@
-package headfirst.designpatterns.timmax.chapter10.timmax.p09;
+package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.IStateOfGumballMachine;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.inners.*;
 
 public class GumballMachineStateContext extends StateContext implements IStateOfGumballMachine {
     private final SPNoQuarter spNoQuarter;

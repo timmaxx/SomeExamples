@@ -19,23 +19,6 @@ public class SPWinner extends AGumballMachineState<NullType> implements IStateOf
 
     // Implemented methods of interface IStateOfGumballMachineProtected:
     @Override
-    public void dispense() {
-        getStateContext().releaseBall();
-        if (getNumberGumballs() == 0) {
-            changeState(getStateContext().getSpSoldOut());
-            return;
-        }
-
-        getStateContext().releaseBall();
-        System.out.println("You're a winner! You got two gumballs for your quarter");
-        if (getNumberGumballs() > 0) {
-            changeState(getStateContext().getSpNoQuarter());
-        } else {
-            changeState(getStateContext().getSpSoldOut());
-        }
-    }
-
-    @Override
     public void refill() {
     }
 
@@ -59,5 +42,24 @@ public class SPWinner extends AGumballMachineState<NullType> implements IStateOf
     @Override
     public String toString() {
         return "dispensing two gumballs for your quarter, because you're a winner!";
+    }
+
+    @Override
+    public void doOnEnter() {
+        super.doOnEnter();
+
+        getStateContext().releaseBall();
+        if (getNumberGumballs() == 0) {
+            changeState(getStateContext().getSpSoldOut());
+            return;
+        }
+
+        getStateContext().releaseBall();
+        System.out.println("You're a winner! You got two gumballs for your quarter");
+        if (getNumberGumballs() > 0) {
+            changeState(getStateContext().getSpNoQuarter());
+        } else {
+            changeState(getStateContext().getSpSoldOut());
+        }
     }
 }

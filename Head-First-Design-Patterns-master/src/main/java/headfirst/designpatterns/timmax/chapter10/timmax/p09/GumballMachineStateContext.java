@@ -68,7 +68,6 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
     @Override
     public void turnCrank() {
         getCurrentState().turnCrank();
-        getCurrentState().dispense();
     }
 
     @Override

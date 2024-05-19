@@ -10,8 +10,6 @@ public abstract class AGumballMachineState<StateData> extends AState<StateData> 
         super(stateContext, stateDataClass);
     }
 
-    public abstract void dispense();
-
     public final int getNumberGumballs() {
         return getStateContext().getSpNoQuarter().getData();
     }

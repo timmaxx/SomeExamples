@@ -18,11 +18,6 @@ public class SPSoldOut extends AGumballMachineState<NullType> implements IStateO
 
     // Implemented methods of interface IStateOfGumballMachineProtected:
     @Override
-    public void dispense() {
-        System.out.println("No gumball dispensed");
-    }
-
-    @Override
     public void refill() {
         getStateContext().getSpNoQuarter().setNumberGumballs(MAX_OF_GUMBALLS);
         changeState(getStateContext().getSpNoQuarter());

@@ -24,11 +24,6 @@ public class SPHasQuarter extends AGumballMachineState<NullType> implements ISta
 
     // Implemented methods of interface IStateOfGumballMachineProtected:
     @Override
-    public void dispense() {
-        System.out.println("No gumball dispensed");
-    }
-
-    @Override
     public void refill() {
     }
 

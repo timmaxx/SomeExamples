@@ -19,11 +19,6 @@ public class SPNoQuarter extends AGumballMachineState<Integer> implements IState
 
     // Implemented methods of interface IStateOfGumballMachineProtected:
     @Override
-    public void dispense() {
-        System.out.println("You need to pay first");
-    }
-
-    @Override
     public void refill() {
     }
 

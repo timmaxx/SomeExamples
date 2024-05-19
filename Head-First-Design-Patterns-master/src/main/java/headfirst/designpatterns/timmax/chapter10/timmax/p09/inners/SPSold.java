@@ -18,16 +18,6 @@ public class SPSold extends AGumballMachineState<NullType> implements IStateOfGu
 
     // Implemented methods of interface IStateOfGumballMachineProtected:
     @Override
-    public void dispense() {
-        getStateContext().releaseBall();
-        if (getNumberGumballs() > 0) {
-            changeState(getStateContext().getSpNoQuarter());
-        } else {
-            changeState(getStateContext().getSpSoldOut());
-        }
-    }
-
-    @Override
     public void refill() {
     }
 
@@ -51,5 +41,18 @@ public class SPSold extends AGumballMachineState<NullType> implements IStateOfGu
     @Override
     public String toString() {
         return "dispensing a gumball";
+    }
+
+    @Override
+    public void doOnEnter() {
+        super.doOnEnter();
+
+        getStateContext().releaseBall();
+        Integer numberGumballs = getStateContext().getSpNoQuarter().getData();
+        if (numberGumballs > 0) {
+            changeState(getStateContext().getSpNoQuarter());
+        } else {
+            changeState(getStateContext().getSpSoldOut());
+        }
     }
 }

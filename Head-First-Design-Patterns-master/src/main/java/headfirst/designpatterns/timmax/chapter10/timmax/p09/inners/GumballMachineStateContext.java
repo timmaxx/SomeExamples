@@ -9,6 +9,7 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
     private final SPSold spSold;
     private final SPSoldOut spSoldOut;
     private final SPWinner spWinner;
+    private final SPEjectingQuarter spEjectingQuarter;
 
     public GumballMachineStateContext() {
         spNoQuarter = new SPNoQuarter(this);
@@ -16,6 +17,7 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         spSold = new SPSold(this);
         spSoldOut = new SPSoldOut(this);
         spWinner = new SPWinner(this);
+        spEjectingQuarter = new SPEjectingQuarter(this);
 
         setCurrentState(spSoldOut);
         spNoQuarter.setNumberGumballs(0);
@@ -39,6 +41,10 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
 
     public SPWinner getSpWinner() {
         return spWinner;
+    }
+
+    public SPEjectingQuarter getSpEjectingQuarter() {
+        return spEjectingQuarter;
     }
 
     public void releaseBall() {

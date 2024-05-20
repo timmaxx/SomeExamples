@@ -12,7 +12,7 @@ public class SPHasQuarter extends AGumballMachineState<NullType> implements ISta
     public SPHasQuarter(StateContext stateContext) {
         super(stateContext, null);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
-                new PairDestStateAndCanSwitchWithoutParams(SPNoQuarter.class, true)
+                new PairDestStateAndCanSwitchWithoutParams(SPEjectingQuarter.class, true)
         );
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SPSold.class, true)
@@ -35,8 +35,7 @@ public class SPHasQuarter extends AGumballMachineState<NullType> implements ISta
 
     @Override
     public void ejectQuarter() {
-        System.out.println("Quarter returned");
-        changeState(getStateContext().getSpNoQuarter());
+        changeState(getStateContext().getSpEjectingQuarter());
     }
 
     @Override

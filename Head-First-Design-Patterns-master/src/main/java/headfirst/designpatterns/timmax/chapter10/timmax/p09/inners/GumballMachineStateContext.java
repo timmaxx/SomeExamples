@@ -47,14 +47,6 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         return spEjectingQuarter;
     }
 
-    void releaseBall() {
-        System.out.println("A gumball comes rolling out the slot...");
-        Integer numberGumballs = getSpNoQuarter().getData();
-        if (numberGumballs > 0) {
-            getSpNoQuarter().setData((numberGumballs - 1));
-        }
-    }
-
     // Overridden methods of class StateContext:
     @Override
     protected AGumballMachineState<?> getCurrentState() {

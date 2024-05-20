@@ -23,27 +23,27 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         spNoQuarter.setNumberGumballs(0);
     }
 
-    public SPHasQuarter getSpHasQuarter() {
+    SPHasQuarter getSpHasQuarter() {
         return spHasQuarter;
     }
 
-    public SPNoQuarter getSpNoQuarter() {
+    SPNoQuarter getSpNoQuarter() {
         return spNoQuarter;
     }
 
-    public SPSold getSpSold() {
+    SPSold getSpSold() {
         return spSold;
     }
 
-    public SPSoldOut getSpSoldOut() {
+    SPSoldOut getSpSoldOut() {
         return spSoldOut;
     }
 
-    public SPWinner getSpWinner() {
+    SPWinner getSpWinner() {
         return spWinner;
     }
 
-    public SPEjectingQuarter getSpEjectingQuarter() {
+    SPEjectingQuarter getSpEjectingQuarter() {
         return spEjectingQuarter;
     }
 
@@ -55,8 +55,9 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         }
     }
 
+    // Overridden methods of class StateContext:
     @Override
-    public AGumballMachineState<?> getCurrentState() {
+    protected AGumballMachineState<?> getCurrentState() {
         return (AGumballMachineState<?>) super.getCurrentState();
     }
 

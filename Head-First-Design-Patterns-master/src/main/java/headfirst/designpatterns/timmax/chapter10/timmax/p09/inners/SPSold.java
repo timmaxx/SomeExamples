@@ -43,8 +43,7 @@ public class SPSold extends AGumballMachineState<NullType> implements IStateOfGu
         super.doOnEnter();
 
         getStateContext().releaseBall();
-        Integer numberGumballs = getStateContext().getSpNoQuarter().getData();
-        if (numberGumballs > 0) {
+        if (getNumberGumballs() > 0) {
             changeState(getStateContext().getSpNoQuarter());
         } else {
             changeState(getStateContext().getSpSoldOut());

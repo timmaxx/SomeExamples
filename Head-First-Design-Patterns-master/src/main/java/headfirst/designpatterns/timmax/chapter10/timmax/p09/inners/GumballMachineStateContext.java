@@ -6,17 +6,17 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateCo
 public class GumballMachineStateContext extends StateContext implements IStateOfGumballMachine {
     private final SPNoQuarter spNoQuarter;
     private final SPHasQuarter spHasQuarter;
-    private final SPSold spSold;
+    private final SPGivingGumOne spGivingGumOne;
     private final SPSoldOut spSoldOut;
-    private final SPWinner spWinner;
+    private final SPGivingGumWinner spGivingGumWinner;
     private final SPEjectingQuarter spEjectingQuarter;
 
     public GumballMachineStateContext() {
         spNoQuarter = new SPNoQuarter(this);
         spHasQuarter = new SPHasQuarter(this);
-        spSold = new SPSold(this);
+        spGivingGumOne = new SPGivingGumOne(this);
         spSoldOut = new SPSoldOut(this);
-        spWinner = new SPWinner(this);
+        spGivingGumWinner = new SPGivingGumWinner(this);
         spEjectingQuarter = new SPEjectingQuarter(this);
 
         setCurrentState(spSoldOut);
@@ -31,16 +31,16 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         return spNoQuarter;
     }
 
-    SPSold getSpSold() {
-        return spSold;
+    SPGivingGumOne getSpGivingGumOne() {
+        return spGivingGumOne;
     }
 
     SPSoldOut getSpSoldOut() {
         return spSoldOut;
     }
 
-    SPWinner getSpWinner() {
-        return spWinner;
+    SPGivingGumWinner getSpGivingGumWinner() {
+        return spGivingGumWinner;
     }
 
     SPEjectingQuarter getSpEjectingQuarter() {

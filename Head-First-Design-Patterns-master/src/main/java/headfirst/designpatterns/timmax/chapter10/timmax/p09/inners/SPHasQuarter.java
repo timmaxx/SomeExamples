@@ -15,10 +15,10 @@ public class SPHasQuarter extends AGumballMachineState<NullType> implements ISta
                 new PairDestStateAndCanSwitchWithoutParams(SPEjectingQuarter.class, true)
         );
         setOfPairDestStateAndCanSwitchWithoutParams.add(
-                new PairDestStateAndCanSwitchWithoutParams(SPSold.class, true)
+                new PairDestStateAndCanSwitchWithoutParams(SPGivingGumOne.class, true)
         );
         setOfPairDestStateAndCanSwitchWithoutParams.add(
-                new PairDestStateAndCanSwitchWithoutParams(SPWinner.class, true)
+                new PairDestStateAndCanSwitchWithoutParams(SPGivingGumWinner.class, true)
         );
     }
 
@@ -43,9 +43,9 @@ public class SPHasQuarter extends AGumballMachineState<NullType> implements ISta
         System.out.println("You turned...");
         int winner = randomWinner.nextInt(10);
         if ((winner == 0) && (getNumberGumballs() > 1)) {
-            changeState(getStateContext().getSpWinner());
+            changeState(getStateContext().getSpGivingGumWinner());
         } else {
-            changeState(getStateContext().getSpSold());
+            changeState(getStateContext().getSpGivingGumOne());
         }
     }
 

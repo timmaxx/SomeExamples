@@ -5,8 +5,8 @@ import javax.lang.model.type.NullType;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public abstract class SPSoldBase extends AGumballMachineState<NullType> implements IStateOfGumballMachineProtected {
-    public SPSoldBase(StateContext stateContext) {
+public abstract class SPGivingGumABase extends AGumballMachineState<NullType> implements IStateOfGumballMachineProtected {
+    public SPGivingGumABase(StateContext stateContext) {
         super(stateContext, null);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SPNoQuarter.class, true)

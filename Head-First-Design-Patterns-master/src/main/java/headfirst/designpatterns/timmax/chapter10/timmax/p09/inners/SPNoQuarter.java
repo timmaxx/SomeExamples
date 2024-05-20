@@ -25,7 +25,6 @@ public class SPNoQuarter extends AGumballMachineState<Integer> implements IState
     // Implemented methods of interface IStateOfGumballMachine:
     @Override
     public void insertQuarter() {
-        System.out.println("You inserted a quarter");
         changeState(getStateContext().getSpHasQuarter());
     }
 

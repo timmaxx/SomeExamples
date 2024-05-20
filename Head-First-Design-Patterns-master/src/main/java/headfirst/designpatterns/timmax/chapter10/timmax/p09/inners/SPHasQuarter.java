@@ -55,4 +55,10 @@ public class SPHasQuarter extends AGumballMachineState<NullType> implements ISta
     public String toString() {
         return "waiting for turn of crank";
     }
+
+    @Override
+    public void doOnEnter() {
+        super.doOnEnter();
+        System.out.println("You inserted a quarter");
+    }
 }

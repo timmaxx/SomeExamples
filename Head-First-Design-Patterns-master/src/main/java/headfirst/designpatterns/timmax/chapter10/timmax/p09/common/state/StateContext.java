@@ -7,7 +7,7 @@ public abstract class StateContext implements IStateContext {
         return currentState;
     }
 
-    protected  <StateData> void setCurrentState(AState<StateData> currentState) {
+    protected <StateData> void setCurrentState(AState<StateData> currentState) {
         this.currentState = currentState;
         currentState.doOnEnter();
     }

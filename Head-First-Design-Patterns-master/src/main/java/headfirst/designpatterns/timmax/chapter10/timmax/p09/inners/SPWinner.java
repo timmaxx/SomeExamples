@@ -38,12 +38,7 @@ public class SPWinner extends AGumballMachineState<NullType> implements IStateOf
         System.out.println("Turning again doesn't get you another gumball!");
     }
 
-    // Overridden methods of class Object:
-    @Override
-    public String toString() {
-        return "dispensing two gumballs for your quarter, because you're a winner!";
-    }
-
+    // Overridden methods of class AState:
     @Override
     public void doOnEnter() {
         super.doOnEnter();
@@ -61,5 +56,11 @@ public class SPWinner extends AGumballMachineState<NullType> implements IStateOf
         } else {
             changeState(getStateContext().getSpSoldOut());
         }
+    }
+
+    // Overridden methods of class Object:
+    @Override
+    public String toString() {
+        return "dispensing two gumballs for your quarter, because you're a winner!";
     }
 }

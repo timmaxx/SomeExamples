@@ -14,6 +14,11 @@ public abstract class AGumballMachineState<StateData> extends AState<StateData> 
     }
 
     @Override
+    public void doOnEnter() {
+        System.out.println("Machine has entered into state '" + this + "'");
+    }
+
+    @Override
     public GumballMachineStateContext getStateContext() {
         return (GumballMachineStateContext) super.getStateContext();
     }

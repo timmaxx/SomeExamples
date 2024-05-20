@@ -49,15 +49,16 @@ public class SPHasQuarter extends AGumballMachineState<NullType> implements ISta
         }
     }
 
-    // Overridden methods of the Object class:
-    @Override
-    public String toString() {
-        return "waiting for turn of crank";
-    }
-
+    // Overridden methods of class AState:
     @Override
     public void doOnEnter() {
         super.doOnEnter();
         System.out.println("You inserted a quarter");
+    }
+
+    // Overridden methods of the Object class:
+    @Override
+    public String toString() {
+        return "waiting for turn of crank";
     }
 }

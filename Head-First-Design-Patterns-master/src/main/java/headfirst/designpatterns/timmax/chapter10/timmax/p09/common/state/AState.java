@@ -23,6 +23,8 @@ public abstract class AState<StateData> implements IState<StateData> {
         return stateContext;
     }
 
+    public abstract void doOnEnter();
+
     private void setAsCurrent() {
         stateContext.setCurrentState(this);
     }
@@ -57,12 +59,8 @@ public abstract class AState<StateData> implements IState<StateData> {
     // Implemented methods of interface IStateContext
     @Override
     public void changeState(AState<?> aState) {
-        // Warning:(61, 35) Unchecked cast: 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<capture<?>>' to 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<StateData>'
+        // Warning:(63, 35) Unchecked cast: 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<capture<?>>' to 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<StateData>'
         checkPosibleToChangeState((AState<StateData>) aState, false);
         aState.setAsCurrent();
-    }
-
-    public void doOnEnter() {
-        System.out.println("Machine has entered into state '" + this + "'");
     }
 }

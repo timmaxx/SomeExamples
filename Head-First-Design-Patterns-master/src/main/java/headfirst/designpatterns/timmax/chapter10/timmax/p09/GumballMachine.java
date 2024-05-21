@@ -3,7 +3,7 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.inners.GumballMachineStateContext;
 
 public class GumballMachine implements IStateOfGumballMachine {
-	private final GumballMachineStateContext stateContext;
+	private final IStateOfGumballMachine stateContext;
 
 	public GumballMachine() {
 		stateContext = new GumballMachineStateContext();

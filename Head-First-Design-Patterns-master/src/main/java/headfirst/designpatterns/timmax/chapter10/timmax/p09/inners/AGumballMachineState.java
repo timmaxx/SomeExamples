@@ -22,13 +22,4 @@ public abstract class AGumballMachineState<StateData> extends AState<StateData> 
     public GumballMachineStateContext getStateContext() {
         return (GumballMachineStateContext) super.getStateContext();
     }
-
-    @Override
-    public abstract void insertQuarter();
-
-    @Override
-    public abstract void ejectQuarter();
-
-    @Override
-    public abstract void turnCrank();
 }

@@ -7,20 +7,13 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateCo
 
 import static headfirst.designpatterns.timmax.chapter10.timmax.p09.inners.SPNoQuarter.MAX_OF_GUMBALLS;
 
-public class SPSoldOut extends AGumballMachineState<NullType> implements IStateOfGumballMachineProtected {
+public class SPSoldOut extends AGumballMachineState<NullType> {
     public SPSoldOut(StateContext stateContext) {
         super(stateContext, null);
 		// Такой вариант не описан на стр. 442, но должен быть...
 		setOfPairDestStateAndCanSwitchWithoutParams.add(
 				new PairDestStateAndCanSwitchWithoutParams(SPNoQuarter.class, true)
 		);
-    }
-
-    // Implemented methods of interface IStateOfGumballMachineProtected:
-    @Override
-    public void refill() {
-        getStateContext().getSpNoQuarter().setNumberGumballs(MAX_OF_GUMBALLS);
-        changeState(getStateContext().getSpNoQuarter());
     }
 
     // Implemented methods of interface IStateOfGumballMachine:
@@ -37,6 +30,12 @@ public class SPSoldOut extends AGumballMachineState<NullType> implements IStateO
     @Override
     public void turnCrank() {
         System.out.println("You turned, but there are no gumballs");
+    }
+
+    @Override
+    public void refill() {
+        getStateContext().getSpNoQuarter().setNumberGumballs(MAX_OF_GUMBALLS);
+        changeState(getStateContext().getSpNoQuarter());
     }
 
     // Overridden methods of class Object:

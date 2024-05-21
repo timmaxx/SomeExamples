@@ -5,7 +5,7 @@ import javax.lang.model.type.NullType;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public abstract class SPGivingGumABase extends AGumballMachineState<NullType> implements IStateOfGumballMachineProtected {
+public abstract class SPGivingGumABase extends AGumballMachineState<NullType> {
     public SPGivingGumABase(StateContext stateContext) {
         super(stateContext, null);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
@@ -23,11 +23,6 @@ public abstract class SPGivingGumABase extends AGumballMachineState<NullType> im
         }
     }
 
-    // Implemented methods of interface IStateOfGumballMachineProtected:
-    @Override
-    public void refill() {
-    }
-
     // Implemented methods of interface IStateOfGumballMachine:
     @Override
     public void insertQuarter() {
@@ -42,6 +37,10 @@ public abstract class SPGivingGumABase extends AGumballMachineState<NullType> im
     @Override
     public void turnCrank() {
         System.out.println("Turning twice doesn't get you another gumball!");
+    }
+
+    @Override
+    public void refill() {
     }
 
     // Overridden methods of class AState:

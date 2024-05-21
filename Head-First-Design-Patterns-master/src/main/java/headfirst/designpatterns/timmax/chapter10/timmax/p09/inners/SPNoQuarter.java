@@ -3,7 +3,7 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class SPNoQuarter extends AGumballMachineState<Integer> implements IStateOfGumballMachineProtected {
+public class SPNoQuarter extends AGumballMachineState<Integer> {
     public static int MAX_OF_GUMBALLS = 6;
 
     public SPNoQuarter(StateContext stateContext) {
@@ -15,11 +15,6 @@ public class SPNoQuarter extends AGumballMachineState<Integer> implements IState
 
     public void setNumberGumballs(int numberGumballs) {
         setData(numberGumballs);
-    }
-
-    // Implemented methods of interface IStateOfGumballMachineProtected:
-    @Override
-    public void refill() {
     }
 
     // Implemented methods of interface IStateOfGumballMachine:
@@ -36,6 +31,10 @@ public class SPNoQuarter extends AGumballMachineState<Integer> implements IState
     @Override
     public void turnCrank() {
         System.out.println("You turned, but there's no quarter");
+    }
+
+    @Override
+    public void refill() {
     }
 
     // Overridden methods of class Object:

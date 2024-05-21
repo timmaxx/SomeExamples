@@ -6,7 +6,7 @@ import java.util.Random;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class SPHasQuarter extends AGumballMachineState<NullType> implements IStateOfGumballMachineProtected {
+public class SPHasQuarter extends AGumballMachineState<NullType> {
     private final Random randomWinner = new Random(System.currentTimeMillis());
 
     public SPHasQuarter(StateContext stateContext) {
@@ -20,11 +20,6 @@ public class SPHasQuarter extends AGumballMachineState<NullType> implements ISta
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SPGivingGumWinner.class, true)
         );
-    }
-
-    // Implemented methods of interface IStateOfGumballMachineProtected:
-    @Override
-    public void refill() {
     }
 
     // Implemented methods of the IStateOfGumballMachine interface:
@@ -47,6 +42,10 @@ public class SPHasQuarter extends AGumballMachineState<NullType> implements ISta
         } else {
             changeState(getStateContext().getSpGivingGumOne());
         }
+    }
+
+    @Override
+    public void refill() {
     }
 
     // Overridden methods of class AState:

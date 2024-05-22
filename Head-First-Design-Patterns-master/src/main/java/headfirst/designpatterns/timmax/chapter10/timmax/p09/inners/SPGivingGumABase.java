@@ -48,6 +48,7 @@ public abstract class SPGivingGumABase extends AGumballMachineState<NullType> {
     public void doOnEnter() {
         super.doOnEnter();
 
+        getStateContext().incCountOfQuarters();
         releaseBall();
         if (getNumberGumballs() == 0) {
             changeState(getStateContext().getSpSoldOut());

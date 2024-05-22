@@ -11,6 +11,8 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
     private final SPGivingGumWinner spGivingGumWinner;
     private final SPEjectingQuarter spEjectingQuarter;
 
+    private int countOfQuarters;
+
     public GumballMachineStateContext() {
         spNoQuarter = new SPNoQuarter(this);
         spHasQuarter = new SPHasQuarter(this);
@@ -21,6 +23,7 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
 
         setCurrentState(spSoldOut);
         spNoQuarter.setNumberGumballs(0);
+        countOfQuarters = 0;
     }
 
     SPHasQuarter getSpHasQuarter() {
@@ -45,6 +48,10 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
 
     SPEjectingQuarter getSpEjectingQuarter() {
         return spEjectingQuarter;
+    }
+
+    void incCountOfQuarters() {
+        countOfQuarters++;
     }
 
     // Overridden methods of class StateContext:
@@ -80,14 +87,8 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         StringBuilder result = new StringBuilder();
         // result.append("Mighty Gumball, Inc. Java-enabled Standing Gumball Model #2004\n");
         int numberGumballs = spNoQuarter.getNumberGumballs();
-        // result.append(super.toString()).append(". ");
-        result.append("Inventory: ").append(numberGumballs).append(" gumball");
-        if (numberGumballs != 1) {
-            result.append("s");
-        }
-        // result.append("\n");
-        result.append(". ");
-        // result.append("Machine is ").append(currentState).append("\n");
+        result.append("Inventory: count of gumballs = ").append(numberGumballs).append(", ");
+        result.append("count of coins = ").append(countOfQuarters).append(". ");
         result.append("Machine is ").append(getCurrentState()).append(".");
         return result.toString();
     }

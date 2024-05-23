@@ -8,6 +8,9 @@ public abstract class StateContext implements IStateContext {
     }
 
     protected void setCurrentState(IState currentState) {
+        if (this.currentState != null) {
+            this.currentState.doOnExit();
+        }
         this.currentState = currentState;
         currentState.doOnEnter();
     }

@@ -3,7 +3,7 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class SPNoQuarter extends AGumballMachineState<Integer> {
+public class SPNoQuarter extends AGumballMachineState {
     public static int MAX_OF_GUMBALLS = 6;
     private int numberGumballs;
 

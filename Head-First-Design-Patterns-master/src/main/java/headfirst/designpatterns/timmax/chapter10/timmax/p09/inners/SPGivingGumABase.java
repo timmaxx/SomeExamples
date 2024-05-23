@@ -1,11 +1,9 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 
-import javax.lang.model.type.NullType;
-
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public abstract class SPGivingGumABase extends AGumballMachineState<NullType> {
+public abstract class SPGivingGumABase extends AGumballMachineState {
     public SPGivingGumABase(StateContext stateContext) {
         super(stateContext);
         setOfPairDestStateAndCanSwitchWithoutParams.add(

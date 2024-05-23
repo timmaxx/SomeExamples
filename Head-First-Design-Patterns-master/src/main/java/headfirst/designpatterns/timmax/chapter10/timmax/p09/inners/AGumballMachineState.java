@@ -4,7 +4,7 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.IStateOfGumballMachi
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public abstract class AGumballMachineState<StateData> extends AState<StateData> implements IStateOfGumballMachine {
+public abstract class AGumballMachineState extends AState implements IStateOfGumballMachine {
     public AGumballMachineState(StateContext stateContext) {
         super(stateContext);
     }

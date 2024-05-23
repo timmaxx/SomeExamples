@@ -56,8 +56,8 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
 
     // Overridden methods of class StateContext:
     @Override
-    protected AGumballMachineState<?> getCurrentState() {
-        return (AGumballMachineState<?>) super.getCurrentState();
+    protected AGumballMachineState getCurrentState() {
+        return (AGumballMachineState) super.getCurrentState();
     }
 
     // Implemented methods of interface IStateOfGumballMachine:

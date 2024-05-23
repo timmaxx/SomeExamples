@@ -5,7 +5,7 @@ import java.util.Set;
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.classes.Classes;
 
-public abstract class AState<StateData> implements IState {
+public abstract class AState implements IState {
     private final StateContext stateContext;
 
     protected final Set<PairDestStateAndCanSwitchWithoutParams> setOfPairDestStateAndCanSwitchWithoutParams;
@@ -25,7 +25,7 @@ public abstract class AState<StateData> implements IState {
         stateContext.setCurrentState(this);
     }
 
-    private void checkPosibleToChangeState(AState<StateData> aState) {
+    private void checkPosibleToChangeState(AState aState) {
         for (PairDestStateAndCanSwitchWithoutParams pairDestStateAndCanSwitchWithoutParams : setOfPairDestStateAndCanSwitchWithoutParams) {
             if (Classes.isInstanceOf(aState, pairDestStateAndCanSwitchWithoutParams.destinationStateClass())
                     && pairDestStateAndCanSwitchWithoutParams.canSwitchWithoutParams()) {
@@ -39,7 +39,7 @@ public abstract class AState<StateData> implements IState {
     @Override
     public void changeState(AState<?> aState) {
         // Warning:(63, 35) Unchecked cast: 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<capture<?>>' to 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<StateData>'
-        checkPosibleToChangeState((AState<StateData>) aState);
+        checkPosibleToChangeState(aState);
         aState.setAsCurrent();
     }
 }

@@ -1,13 +1,13 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state;
 
 public abstract class StateContext implements IStateContext {
-    private AState currentState;
+    private IState currentState;
 
-    protected AState getCurrentState() {
+    protected IState getCurrentState() {
         return currentState;
     }
 
-    protected void setCurrentState(AState currentState) {
+    protected void setCurrentState(IState currentState) {
         this.currentState = currentState;
         currentState.doOnEnter();
     }

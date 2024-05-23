@@ -25,10 +25,9 @@ public abstract class AState<StateData> implements IState {
         stateContext.setCurrentState(this);
     }
 
-    private void checkPosibleToChangeState(AState<StateData> aState, boolean isThereStateData) {
+    private void checkPosibleToChangeState(AState<StateData> aState) {
         for (PairDestStateAndCanSwitchWithoutParams pairDestStateAndCanSwitchWithoutParams : setOfPairDestStateAndCanSwitchWithoutParams) {
             if (Classes.isInstanceOf(aState, pairDestStateAndCanSwitchWithoutParams.destinationStateClass())
-                    && !isThereStateData
                     && pairDestStateAndCanSwitchWithoutParams.canSwitchWithoutParams()) {
                 return;
             }
@@ -40,7 +39,7 @@ public abstract class AState<StateData> implements IState {
     @Override
     public void changeState(AState<?> aState) {
         // Warning:(63, 35) Unchecked cast: 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<capture<?>>' to 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<StateData>'
-        checkPosibleToChangeState((AState<StateData>) aState, false);
+        checkPosibleToChangeState((AState<StateData>) aState);
         aState.setAsCurrent();
     }
 }

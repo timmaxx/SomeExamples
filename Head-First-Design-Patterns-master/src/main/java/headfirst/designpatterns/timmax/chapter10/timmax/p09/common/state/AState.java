@@ -21,11 +21,13 @@ public abstract class AState implements IState {
 
     public abstract void doOnEnter();
 
-    private void setAsCurrent() {
+    @Override
+    // ToDo: must be private
+    public void setAsCurrent() {
         stateContext.setCurrentState(this);
     }
 
-    private void checkPosibleToChangeState(AState aState) {
+    private void checkPosibleToChangeState(IState aState) {
         for (PairDestStateAndCanSwitchWithoutParams pairDestStateAndCanSwitchWithoutParams : setOfPairDestStateAndCanSwitchWithoutParams) {
             if (Classes.isInstanceOf(aState, pairDestStateAndCanSwitchWithoutParams.destinationStateClass())
                     && pairDestStateAndCanSwitchWithoutParams.canSwitchWithoutParams()) {
@@ -37,7 +39,7 @@ public abstract class AState implements IState {
 
     // Implemented methods of interface IStateContext
     @Override
-    public void changeState(AState<?> aState) {
+    public void changeState(IState aState) {
         // Warning:(63, 35) Unchecked cast: 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<capture<?>>' to 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<StateData>'
         checkPosibleToChangeState(aState);
         aState.setAsCurrent();

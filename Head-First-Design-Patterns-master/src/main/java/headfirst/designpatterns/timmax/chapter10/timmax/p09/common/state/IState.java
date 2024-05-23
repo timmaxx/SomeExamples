@@ -1,6 +1,7 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state;
 
-public interface IState extends IStateContext {
+public interface IState {
+    void changeState(IState state);
     void doOnEnter();
     void doOnExit();
 }

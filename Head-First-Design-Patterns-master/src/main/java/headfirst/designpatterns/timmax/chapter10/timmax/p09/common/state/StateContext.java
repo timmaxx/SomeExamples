@@ -1,6 +1,6 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state;
 
-public abstract class StateContext implements IStateContext {
+public abstract class StateContext {
     private IState currentState;
 
     protected IState getCurrentState() {
@@ -13,10 +13,5 @@ public abstract class StateContext implements IStateContext {
         }
         this.currentState = currentState;
         currentState.doOnEnter();
-    }
-
-    @Override
-    public final void changeState(IState state) {
-        currentState.changeState(state);
     }
 }

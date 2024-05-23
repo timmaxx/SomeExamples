@@ -31,7 +31,7 @@ public abstract class AState implements IState {
 
     // Implemented methods of interface IStateContext
     @Override
-    public void changeState(IState state) {
+    public final void changeState(IState state) {
         checkPosibleToChangeState(state);
         stateContext.setCurrentState(state);
     }

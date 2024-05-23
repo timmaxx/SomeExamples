@@ -29,43 +29,43 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         countOfGumballs = 0;
     }
 
-    SPHasQuarter getSpHasQuarter() {
+    final SPHasQuarter getSpHasQuarter() {
         return spHasQuarter;
     }
 
-    SPNoQuarter getSpNoQuarter() {
+    final SPNoQuarter getSpNoQuarter() {
         return spNoQuarter;
     }
 
-    SPGivingGumOne getSpGivingGumOne() {
+    final SPGivingGumOne getSpGivingGumOne() {
         return spGivingGumOne;
     }
 
-    SPSoldOut getSpSoldOut() {
+    final SPSoldOut getSpSoldOut() {
         return spSoldOut;
     }
 
-    SPGivingGumWinner getSpGivingGumWinner() {
+    final SPGivingGumWinner getSpGivingGumWinner() {
         return spGivingGumWinner;
     }
 
-    SPEjectingQuarter getSpEjectingQuarter() {
+    final SPEjectingQuarter getSpEjectingQuarter() {
         return spEjectingQuarter;
     }
 
-    void incCountOfQuarters() {
+    final void incCountOfQuarters() {
         countOfQuarters++;
     }
 
-    public int getCountOfGumballs() {
+    public final int getCountOfGumballs() {
         return countOfGumballs;
     }
 
-    public void setCountOfGumballs(int maxOfGumballs) {
+    public final void setCountOfGumballs(int maxOfGumballs) {
         countOfGumballs = maxOfGumballs;
     }
 
-    public void decCountOfGumballs() {
+    public final void decCountOfGumballs() {
         countOfGumballs--;
     }
 

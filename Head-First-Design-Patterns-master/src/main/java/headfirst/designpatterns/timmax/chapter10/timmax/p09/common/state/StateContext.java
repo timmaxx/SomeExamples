@@ -7,7 +7,7 @@ public abstract class StateContext {
         return currentState;
     }
 
-    protected void setCurrentState(IState currentState) {
+    protected final void setCurrentState(IState currentState) {
         if (this.currentState != null) {
             this.currentState.doOnExit();
         }

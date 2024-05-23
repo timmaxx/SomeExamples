@@ -4,6 +4,8 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.IStateOfGumballMachi
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
 public class GumballMachineStateContext extends StateContext implements IStateOfGumballMachine {
+    public static int MAX_OF_GUMBALLS = 6;
+
     private final SPNoQuarter spNoQuarter;
     private final SPHasQuarter spHasQuarter;
     private final SPGivingGumOne spGivingGumOne;
@@ -12,6 +14,7 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
     private final SPEjectingQuarter spEjectingQuarter;
 
     private int countOfQuarters;
+    private int countOfGumballs;
 
     public GumballMachineStateContext() {
         spNoQuarter = new SPNoQuarter(this);
@@ -22,8 +25,8 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         spEjectingQuarter = new SPEjectingQuarter(this);
 
         setCurrentState(spSoldOut);
-        spNoQuarter.setNumberGumballs(0);
         countOfQuarters = 0;
+        countOfGumballs = 0;
     }
 
     SPHasQuarter getSpHasQuarter() {
@@ -52,6 +55,18 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
 
     void incCountOfQuarters() {
         countOfQuarters++;
+    }
+
+    public int getCountOfGumballs() {
+        return countOfGumballs;
+    }
+
+    public void setCountOfGumballs(int maxOfGumballs) {
+        countOfGumballs = maxOfGumballs;
+    }
+
+    public void decCountOfGumballs() {
+        countOfGumballs--;
     }
 
     // Overridden methods of class StateContext:
@@ -84,12 +99,10 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
     // Overridden methods of class Object:
     @Override
     public String toString() {
-        StringBuilder result = new StringBuilder();
-        // result.append("Mighty Gumball, Inc. Java-enabled Standing Gumball Model #2004\n");
-        int numberGumballs = spNoQuarter.getNumberGumballs();
-        result.append("Inventory: count of gumballs = ").append(numberGumballs).append(", ");
-        result.append("count of coins = ").append(countOfQuarters).append(". ");
-        result.append("Machine is ").append(getCurrentState()).append(".");
-        return result.toString();
+        return
+        // "Mighty Gumball, Inc. Java-enabled Standing Gumball Model #2004\n" +
+                "Inventory: count of gumballs = " + countOfGumballs + ", " +
+                "count of coins = " + countOfQuarters + ". " +
+                "Machine is " + getCurrentState() + ".";
     }
 }

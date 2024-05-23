@@ -12,12 +12,12 @@ public class SPGivingGumWinner extends SPGivingGumABase {
     public void doOnEnter() {
         super.doOnEnter();
 
-        if (getStateContext().getSpNoQuarter().getNumberGumballs() == 0) {
+        if (getStateContext().getCountOfGumballs() == 0) {
             return;
         }
         releaseBall();
         System.out.println("You're a winner! You got two gumballs for your quarter");
-        if (getStateContext().getSpNoQuarter().getNumberGumballs() > 0) {
+        if (getStateContext().getCountOfGumballs() > 0) {
             changeState(getStateContext().getSpNoQuarter());
         } else {
             changeState(getStateContext().getSpSoldOut());

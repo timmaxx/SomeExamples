@@ -12,7 +12,7 @@ public class SPGivingGumOne extends SPGivingGumABase {
     public void doOnEnter() {
         super.doOnEnter();
 
-        if (getStateContext().getSpNoQuarter().getNumberGumballs() > 0) {
+        if (getStateContext().getCountOfGumballs() > 0) {
             changeState(getStateContext().getSpNoQuarter());
         }
     }

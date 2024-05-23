@@ -3,7 +3,7 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-import static headfirst.designpatterns.timmax.chapter10.timmax.p09.inners.SPNoQuarter.MAX_OF_GUMBALLS;
+import static headfirst.designpatterns.timmax.chapter10.timmax.p09.inners.GumballMachineStateContext.MAX_OF_GUMBALLS;
 
 public class SPSoldOut extends AGumballMachineState {
     public SPSoldOut(StateContext stateContext) {
@@ -32,7 +32,7 @@ public class SPSoldOut extends AGumballMachineState {
 
     @Override
     public void refill() {
-        getStateContext().getSpNoQuarter().setNumberGumballs(MAX_OF_GUMBALLS);
+        getStateContext().setCountOfGumballs(MAX_OF_GUMBALLS);
         changeState(getStateContext().getSpNoQuarter());
     }
 

@@ -16,8 +16,9 @@ public abstract class SPGivingGumABase extends AGumballMachineState {
 
     protected void releaseBall() {
         System.out.println("A gumball comes rolling out the slot...");
-        if (getStateContext().getCountOfGumballs() > 0) {
-            getStateContext().decCountOfGumballs();
+        getStateContext().decCountOfGumballs();
+        if (getStateContext().getCountOfGumballs() == 0) {
+            changeState(getStateContext().getSpSoldOut());
         }
     }
 
@@ -48,8 +49,5 @@ public abstract class SPGivingGumABase extends AGumballMachineState {
 
         getStateContext().incCountOfQuarters();
         releaseBall();
-        if (getStateContext().getCountOfGumballs() == 0) {
-            changeState(getStateContext().getSpSoldOut());
-        }
     }
 }

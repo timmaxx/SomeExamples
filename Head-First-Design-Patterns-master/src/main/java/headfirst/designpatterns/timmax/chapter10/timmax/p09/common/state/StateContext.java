@@ -13,7 +13,7 @@ public abstract class StateContext implements IStateContext {
     }
 
     @Override
-    public final void changeState(AState aState) {
-        currentState.changeState(aState);
+    public final void changeState(IState state) {
+        currentState.changeState(state);
     }
 }

@@ -19,21 +19,20 @@ public abstract class AState implements IState {
         return stateContext;
     }
 
-    private void checkPosibleToChangeState(IState aState) {
+    private void checkPosibleToChangeState(IState state) {
         for (PairDestStateAndCanSwitchWithoutParams pairDestStateAndCanSwitchWithoutParams : setOfPairDestStateAndCanSwitchWithoutParams) {
-            if (Classes.isInstanceOf(aState, pairDestStateAndCanSwitchWithoutParams.destinationStateClass())
+            if (Classes.isInstanceOf(state, pairDestStateAndCanSwitchWithoutParams.destinationStateClass())
                     && pairDestStateAndCanSwitchWithoutParams.canSwitchWithoutParams()) {
                 return;
             }
         }
-        throw new RuntimeException("You cannot change state from '" + this + "' to '" + aState + "'!");
+        throw new RuntimeException("You cannot change state from '" + this + "' to '" + state + "'!");
     }
 
     // Implemented methods of interface IStateContext
     @Override
-    public void changeState(IState aState) {
-        // Warning:(63, 35) Unchecked cast: 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<capture<?>>' to 'headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState<StateData>'
-        checkPosibleToChangeState(aState);
-        stateContext.setCurrentState(aState);
+    public void changeState(IState state) {
+        checkPosibleToChangeState(state);
+        stateContext.setCurrentState(state);
     }
 }

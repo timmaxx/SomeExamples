@@ -9,10 +9,6 @@ public abstract class AGumballMachineState<StateData> extends AState<StateData> 
         super(stateContext, stateDataClass);
     }
 
-    protected final int getNumberGumballs() {
-        return getStateContext().getSpNoQuarter().getData();
-    }
-
     @Override
     public void doOnEnter() {
         System.out.println("Machine has entered into state '" + this + "'");

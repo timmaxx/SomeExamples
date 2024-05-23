@@ -5,16 +5,22 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateCo
 
 public class SPNoQuarter extends AGumballMachineState<Integer> {
     public static int MAX_OF_GUMBALLS = 6;
+    private int numberGumballs;
 
     public SPNoQuarter(StateContext stateContext) {
         super(stateContext, Integer.class);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SPHasQuarter.class, true)
         );
+        numberGumballs = 0;
+    }
+
+    public int getNumberGumballs() {
+        return numberGumballs;
     }
 
     public void setNumberGumballs(int numberGumballs) {
-        setData(numberGumballs);
+        this.numberGumballs = numberGumballs;
     }
 
     // Implemented methods of interface IStateOfGumballMachine:

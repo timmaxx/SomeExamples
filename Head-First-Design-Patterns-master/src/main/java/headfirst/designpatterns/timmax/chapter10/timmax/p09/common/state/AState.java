@@ -40,22 +40,6 @@ public abstract class AState<StateData> implements IState<StateData> {
         throw new RuntimeException("You cannot change state from '" + this + "' to '" + aState + "'!");
     }
 
-    @Override
-    public final StateData getData() {
-        return stateData;
-    }
-
-    @Override
-    public void setData(StateData stateData) {
-        if (stateData == null) {
-            throw new RuntimeException("Data for state '" + this + "' is null!");
-        }
-        if (!Classes.isInstanceOf(stateData, stateDataClass)) {
-            throw new RuntimeException("Data for state '" + this + "' is wrong type!");
-        }
-        this.stateData = stateData;
-    }
-
     // Implemented methods of interface IStateContext
     @Override
     public void changeState(AState<?> aState) {

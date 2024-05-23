@@ -5,17 +5,13 @@ import java.util.Set;
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.classes.Classes;
 
-public abstract class AState<StateData> implements IState<StateData> {
+public abstract class AState<StateData> implements IState {
     private final StateContext stateContext;
-    private final Class<StateData> stateDataClass;
 
     protected final Set<PairDestStateAndCanSwitchWithoutParams> setOfPairDestStateAndCanSwitchWithoutParams;
 
-    protected StateData stateData;
-
-    public AState(StateContext stateContext, Class<StateData> stateDataClass) {
+    public AState(StateContext stateContext) {
         this.stateContext = stateContext;
-        this.stateDataClass = stateDataClass;
         this.setOfPairDestStateAndCanSwitchWithoutParams = new HashSet<>();
     }
 

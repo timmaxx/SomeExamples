@@ -10,7 +10,7 @@ public class SPHasQuarter extends AGumballMachineState<NullType> {
     private final Random randomWinner = new Random(System.currentTimeMillis());
 
     public SPHasQuarter(StateContext stateContext) {
-        super(stateContext, null);
+        super(stateContext);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SPEjectingQuarter.class, true)
         );

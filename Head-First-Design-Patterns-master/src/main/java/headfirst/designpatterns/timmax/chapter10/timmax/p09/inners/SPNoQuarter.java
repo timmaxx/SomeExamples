@@ -8,7 +8,7 @@ public class SPNoQuarter extends AGumballMachineState<Integer> {
     private int numberGumballs;
 
     public SPNoQuarter(StateContext stateContext) {
-        super(stateContext, Integer.class);
+        super(stateContext);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SPHasQuarter.class, true)
         );

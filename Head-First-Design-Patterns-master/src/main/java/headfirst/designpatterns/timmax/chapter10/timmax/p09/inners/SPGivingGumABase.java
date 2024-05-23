@@ -7,7 +7,7 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateCo
 
 public abstract class SPGivingGumABase extends AGumballMachineState<NullType> {
     public SPGivingGumABase(StateContext stateContext) {
-        super(stateContext, null);
+        super(stateContext);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SPNoQuarter.class, true)
         );

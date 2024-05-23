@@ -7,7 +7,7 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateCo
 
 public class SPEjectingQuarter extends AGumballMachineState<NullType> {
     public SPEjectingQuarter(StateContext stateContext) {
-        super(stateContext, null);
+        super(stateContext);
 		// Такой вариант не описан на стр. 442, но должен быть...
 		setOfPairDestStateAndCanSwitchWithoutParams.add(
 				new PairDestStateAndCanSwitchWithoutParams(SPNoQuarter.class, true)

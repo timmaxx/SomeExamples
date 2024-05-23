@@ -9,7 +9,7 @@ import static headfirst.designpatterns.timmax.chapter10.timmax.p09.inners.SPNoQu
 
 public class SPSoldOut extends AGumballMachineState<NullType> {
     public SPSoldOut(StateContext stateContext) {
-        super(stateContext, null);
+        super(stateContext);
 		// Такой вариант не описан на стр. 442, но должен быть...
 		setOfPairDestStateAndCanSwitchWithoutParams.add(
 				new PairDestStateAndCanSwitchWithoutParams(SPNoQuarter.class, true)

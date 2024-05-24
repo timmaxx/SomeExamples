@@ -57,15 +57,15 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         countOfQuarters++;
     }
 
-    public final int getCountOfGumballs() {
+    final int getCountOfGumballs() {
         return countOfGumballs;
     }
 
-    public final void setCountOfGumballs(int maxOfGumballs) {
+    final void setCountOfGumballs(int maxOfGumballs) {
         countOfGumballs = maxOfGumballs;
     }
 
-    public final void decCountOfGumballs() {
+    final void decCountOfGumballs() {
         countOfGumballs--;
     }
 

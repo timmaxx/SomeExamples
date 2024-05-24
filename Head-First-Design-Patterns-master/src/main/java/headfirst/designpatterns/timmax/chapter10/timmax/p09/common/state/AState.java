@@ -29,10 +29,18 @@ public abstract class AState implements IState {
         throw new RuntimeException("You cannot change state from '" + this + "' to '" + state + "'!");
     }
 
-    // Implemented methods of interface IStateContext
+    // Implemented methods of interface IState
     @Override
     public final void changeState(IState state) {
         checkPosibleToChangeState(state);
         stateContext.setCurrentState(state);
+    }
+
+    @Override
+    public void doOnEnter() {
+    }
+
+    @Override
+    public void doOnExit() {
     }
 }

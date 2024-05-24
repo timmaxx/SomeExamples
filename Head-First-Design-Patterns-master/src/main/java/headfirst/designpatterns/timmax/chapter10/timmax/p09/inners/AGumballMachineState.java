@@ -15,10 +15,6 @@ public abstract class AGumballMachineState extends AState implements IStateOfGum
     }
 
     @Override
-    public void doOnExit() {
-    }
-
-    @Override
     public GumballMachineStateContext getStateContext() {
         return (GumballMachineStateContext) super.getStateContext();
     }

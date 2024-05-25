@@ -15,6 +15,7 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
 
     private int countOfQuarters;
     private int countOfGumballs;
+    private int countOfWinnerGumballs;
 
     public GumballMachineStateContext() {
         spNoQuarter = new SPNoQuarter(this);
@@ -27,6 +28,7 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         setCurrentState(spSoldOut);
         countOfQuarters = 0;
         countOfGumballs = 0;
+        countOfWinnerGumballs = 0;
     }
 
     final SPHasQuarter getSpHasQuarter() {
@@ -53,10 +55,6 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         return spEjectingQuarter;
     }
 
-    final void incCountOfQuarters() {
-        countOfQuarters++;
-    }
-
     final int getCountOfGumballs() {
         return countOfGumballs;
     }
@@ -65,8 +63,16 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
         countOfGumballs = maxOfGumballs;
     }
 
+    final void incCountOfQuarters() {
+        countOfQuarters++;
+    }
+
     final void decCountOfGumballs() {
         countOfGumballs--;
+    }
+
+    final void incCountOfWinnerGumballs() {
+        countOfWinnerGumballs++;
     }
 
     // Overridden methods of class StateContext:
@@ -100,9 +106,10 @@ public class GumballMachineStateContext extends StateContext implements IStateOf
     @Override
     public String toString() {
         return
-        // "Mighty Gumball, Inc. Java-enabled Standing Gumball Model #2004\n" +
+                // "Mighty Gumball, Inc. Java-enabled Standing Gumball Model #2004\n" +
                 "Inventory: count of gumballs = " + countOfGumballs + ", " +
-                "count of coins = " + countOfQuarters + ". " +
-                "Machine is " + getCurrentState() + ".";
+                        "count of coins = " + countOfQuarters + ", " +
+                        "count of winner gumballs = " + countOfWinnerGumballs + ". " +
+                        "Machine is " + getCurrentState() + ".";
     }
 }

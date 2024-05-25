@@ -16,6 +16,7 @@ public class SPGivingGumWinner extends SPGivingGumABase {
             return;
         }
         releaseBall();
+        getStateContext().incCountOfWinnerGumballs();
         System.out.println("You're a winner! You got two gumballs for your quarter");
         if (getStateContext().getCountOfGumballs() > 0) {
             changeState(getStateContext().getSpNoQuarter());

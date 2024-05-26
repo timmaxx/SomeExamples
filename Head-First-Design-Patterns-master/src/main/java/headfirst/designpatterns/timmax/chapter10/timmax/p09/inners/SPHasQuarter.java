@@ -34,7 +34,6 @@ public class SPHasQuarter extends AGumballMachineState {
 
     @Override
     public void turnCrank() {
-        System.out.println("You turned...");
         int winner = randomWinner.nextInt(10);
         if ((winner == 0) && (getStateContext().getCountOfGumballs() > 1)) {
             changeState(getStateContext().getSpGivingGumWinner());

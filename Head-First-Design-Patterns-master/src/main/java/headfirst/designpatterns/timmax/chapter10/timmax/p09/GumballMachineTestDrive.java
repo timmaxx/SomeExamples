@@ -7,37 +7,39 @@ public class GumballMachineTestDrive {
 		System.out.println(gumballMachine + "\n");
 		gumballMachine.refill();
 		System.out.println(gumballMachine + "\n");
-
+/*
 		gumballMachine.turnCrank();
-
 		gumballMachine.insertQuarter();
 		gumballMachine.ejectQuarter();
 		gumballMachine.turnCrank();
-
+		System.out.println(gumballMachine + "\n");
+*/
 		gumballMachine.insertQuarter();
 		gumballMachine.turnCrank();
-
 		System.out.println(gumballMachine + "\n");
 
 		gumballMachine.insertQuarter();
 		gumballMachine.turnCrank();
-		gumballMachine.insertQuarter();
-		gumballMachine.turnCrank();
-
 		System.out.println(gumballMachine + "\n");
 
 		gumballMachine.insertQuarter();
 		gumballMachine.turnCrank();
-		gumballMachine.insertQuarter();
-		gumballMachine.turnCrank();
-
 		System.out.println(gumballMachine + "\n");
 
 		gumballMachine.insertQuarter();
 		gumballMachine.turnCrank();
+		System.out.println(gumballMachine + "\n");
+
 		gumballMachine.insertQuarter();
 		gumballMachine.turnCrank();
+		System.out.println(gumballMachine + "\n");
 
+		gumballMachine.insertQuarter();
+		gumballMachine.turnCrank();
+		System.out.println(gumballMachine + "\n");
+
+		gumballMachine.insertQuarter();
+		gumballMachine.turnCrank();
 		System.out.println(gumballMachine + "\n");
 	}
 }

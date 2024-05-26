@@ -45,8 +45,10 @@ public abstract class SPGivingGumABase extends AGumballMachineState {
     // Overridden methods of class AState:
     @Override
     public void doOnEnter() {
+        System.out.println("You turned...");
         super.doOnEnter();
 
+        releaseBall();
         getStateContext().incCountOfQuarters();
         releaseBall();
     }

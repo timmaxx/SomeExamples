@@ -50,8 +50,8 @@ public class SPHasQuarter extends AGumballMachineState {
     // Overridden methods of class AState:
     @Override
     public void doOnEnter() {
-        super.doOnEnter();
         System.out.println("You inserted a quarter");
+        super.doOnEnter();
     }
 
     // Overridden methods of the Object class:

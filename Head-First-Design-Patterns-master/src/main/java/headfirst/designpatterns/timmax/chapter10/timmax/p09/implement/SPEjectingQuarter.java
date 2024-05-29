@@ -1,4 +1,4 @@
-package headfirst.designpatterns.timmax.chapter10.timmax.p09.inners;
+package headfirst.designpatterns.timmax.chapter10.timmax.p09.implement;
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;

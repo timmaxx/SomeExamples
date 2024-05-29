@@ -4,7 +4,7 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.IStateO
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class ACoinReceiverState extends AState implements IStateOfCoinReceiver {
+public abstract class ACoinReceiverState extends AState implements IStateOfCoinReceiver {
     public ACoinReceiverState(StateContext stateContext) {
         super(stateContext);
     }

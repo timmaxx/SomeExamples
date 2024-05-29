@@ -4,4 +4,8 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateCo
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.IStateOfGumballDispenser;
 
 public class GumballDispenserStateContext extends StateContext implements IStateOfGumballDispenser {
+    @Override
+    protected AGumballDispenserState getCurrentState() {
+        return (AGumballDispenserState) super.getCurrentState();
+    }
 }

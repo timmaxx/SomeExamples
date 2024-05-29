@@ -4,7 +4,7 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.IStateOfGumballDispenser;
 
-public class AGumballDispenserState extends AState implements IStateOfGumballDispenser {
+public abstract class AGumballDispenserState extends AState implements IStateOfGumballDispenser {
     public AGumballDispenserState(StateContext stateContext) {
         super(stateContext);
     }

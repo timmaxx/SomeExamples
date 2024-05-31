@@ -2,8 +2,8 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implem
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class CRS5CoinReceivingFinally extends ACoinReceiverState {
-    public CRS5CoinReceivingFinally(StateContext stateContext) {
+public class CRS2CoinIsReceivingIntermediately extends ACoinReceiverState {
+    public CRS2CoinIsReceivingIntermediately(StateContext stateContext) {
         super(stateContext);
     }
 

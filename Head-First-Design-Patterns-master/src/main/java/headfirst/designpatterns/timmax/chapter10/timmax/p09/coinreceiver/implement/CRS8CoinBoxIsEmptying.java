@@ -2,8 +2,8 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implem
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class CRS8EmptyingCoinBox extends ACoinReceiverState {
-    public CRS8EmptyingCoinBox(StateContext stateContext) {
+public class CRS8CoinBoxIsEmptying extends ACoinReceiverState {
+    public CRS8CoinBoxIsEmptying(StateContext stateContext) {
         super(stateContext);
     }
 

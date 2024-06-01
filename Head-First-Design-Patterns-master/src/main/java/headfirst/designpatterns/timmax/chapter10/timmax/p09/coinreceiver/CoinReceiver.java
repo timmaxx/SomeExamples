@@ -8,11 +8,11 @@ public class CoinReceiver implements IStateOfCoinReceiver {
     public CoinReceiver() {
         coinReceiverStateContext = new CoinReceiverStateContext();
     }
-
+/*
     public CoinReceiverStateContext getCoinReceiverStateContext() {
         return coinReceiverStateContext;
     }
-
+*/
     public int getCountOfCoins() {
         return coinReceiverStateContext.getCountOfCoins();
     }

@@ -1,5 +1,6 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver;
 
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.ACoinReceiverState;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.CoinReceiverStateContext;
 
 public class CoinReceiver implements IStateOfCoinReceiver {
@@ -8,11 +9,11 @@ public class CoinReceiver implements IStateOfCoinReceiver {
     public CoinReceiver() {
         coinReceiverStateContext = new CoinReceiverStateContext();
     }
-/*
-    public CoinReceiverStateContext getCoinReceiverStateContext() {
-        return coinReceiverStateContext;
+
+    public ACoinReceiverState getCurrentState() {
+        return coinReceiverStateContext.getCurrentState();
     }
-*/
+
     public int getCountOfCoins() {
         return coinReceiverStateContext.getCountOfCoins();
     }

@@ -19,17 +19,27 @@ public class CoinReceiver implements IStateOfCoinReceiver {
     }
 
     @Override
-    public void insertQuarter() {
-        coinReceiverStateContext.insertQuarter();
+    public void insertCoin() {
+        coinReceiverStateContext.insertCoin();
     }
 
     @Override
-    public void ejectQuarter() {
-        coinReceiverStateContext.ejectQuarter();
+    public void ejectCoin() {
+        coinReceiverStateContext.ejectCoin();
+    }
+
+    @Override
+    public void acceptCoin() {
+        coinReceiverStateContext.acceptCoin();
     }
 
     @Override
     public void emptyCoinBox() {
         coinReceiverStateContext.emptyCoinBox();
+    }
+
+    @Override
+    public String toString() {
+        return coinReceiverStateContext.toString();
     }
 }

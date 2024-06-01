@@ -17,4 +17,24 @@ public abstract class ACoinReceiverState extends AState implements IStateOfCoinR
     public CoinReceiverStateContext getStateContext() {
         return (CoinReceiverStateContext) super.getStateContext();
     }
+
+    @Override
+    public void insertCoin() {
+        System.out.println("You are trying to insert a coin.");
+    }
+
+    @Override
+    public void ejectCoin() {
+        System.out.println("You are trying to eject a coin.");
+    }
+
+    @Override
+    public void acceptCoin() {
+        System.out.println("You are trying to accept a coin.");
+    }
+
+    @Override
+    public void emptyCoinBox() {
+        System.out.println("You are trying to empty the coin box.");
+    }
 }

@@ -41,18 +41,65 @@ public class CoinReceiverStateContext extends StateContext implements IStateOfCo
         return crs3CoinBoxCrowded;
     }
 
+    // ----
+    void _insertQuarter() {
+        if (countOfCoins >= MAX_OF_COINS) {
+            setCurrentState(crs3CoinBoxCrowded);
+            throw new RuntimeException();
+        }
+        getCurrentState().changeState(getCrs2CoinReceivedIntermediately());
+    }
+
+    void _ejectQuarter() {
+        getCurrentState().changeState(getCrs1ReadyToReceiveCoin());
+    }
+
+    void _acceptCoin() {
+        if (countOfCoins >= MAX_OF_COINS) {
+            // setCurrentState(crs3CoinBoxCrowded);
+            getCurrentState().changeState(getCrs3CoinBoxCrowded());
+            throw new RuntimeException();
+        }
+        countOfCoins++;
+        if (countOfCoins >= MAX_OF_COINS) {
+            // setCurrentState(crs3CoinBoxCrowded);
+            getCurrentState().changeState(getCrs3CoinBoxCrowded());
+            // throw new RuntimeException();
+            return;
+        }
+        getCurrentState().changeState(getCrs1ReadyToReceiveCoin());
+    }
+
+    void _emptyCoinBox() {
+        System.out.println("Ejected " + getCountOfCoins() + " coins.");
+        countOfCoins = 0;
+        getCurrentState().changeState(getCrs1ReadyToReceiveCoin());
+    }
+
+    // ----
     @Override
-    public void insertQuarter() {
-        getCurrentState().insertQuarter();
+    public void insertCoin() {
+        getCurrentState().insertCoin();
     }
 
     @Override
-    public void ejectQuarter() {
-        getCurrentState().ejectQuarter();
+    public void ejectCoin() {
+        getCurrentState().ejectCoin();
+    }
+
+    @Override
+    public void acceptCoin() {
+        getCurrentState().acceptCoin();
     }
 
     @Override
     public void emptyCoinBox() {
         getCurrentState().emptyCoinBox();
+    }
+
+    // ----
+    @Override
+    public String toString() {
+        return getCurrentState().toString() + ". MAX_OF_COINS = " + MAX_OF_COINS + ". countOfCoins = " + countOfCoins;
     }
 }

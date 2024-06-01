@@ -1,5 +1,6 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser;
 
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.implement.AGumballDispenserState;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.implement.GumballDispenserStateContext;
 
 public class GumballDispenser implements IStateOfGumballDispenser {
@@ -8,11 +9,11 @@ public class GumballDispenser implements IStateOfGumballDispenser {
     public GumballDispenser() {
         gumballDispenserStateContext = new GumballDispenserStateContext();
     }
-/*
-    public GumballDispenserStateContext getGumballDispenserStateContext() {
-        return gumballDispenserStateContext;
+
+    public AGumballDispenserState getCurrentState() {
+        return gumballDispenserStateContext.getCurrentState();
     }
-*/
+
     public int getCountOfGumballs() {
         return gumballDispenserStateContext.getCountOfGumballs();
     }

@@ -2,10 +2,9 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implem
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.IStateOfCoinReceiver;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState;
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
 public abstract class ACoinReceiverState extends AState implements IStateOfCoinReceiver {
-    public ACoinReceiverState(StateContext stateContext) {
+    public ACoinReceiverState(CoinReceiverStateContext stateContext) {
         super(stateContext);
     }
 

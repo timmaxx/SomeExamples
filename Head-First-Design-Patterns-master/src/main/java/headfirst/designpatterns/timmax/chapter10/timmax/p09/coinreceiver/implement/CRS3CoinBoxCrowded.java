@@ -32,8 +32,8 @@ public class CRS3CoinBoxCrowded extends ACoinReceiverState {
     }
 
     @Override
-    public void emptyCoinBox() {
-        super.emptyCoinBox();
-        getStateContext()._emptyCoinBox();
+    public void pullOutAllCoins() {
+        super.pullOutAllCoins();
+        getStateContext()._pullOutAllCoins();
     }
 }

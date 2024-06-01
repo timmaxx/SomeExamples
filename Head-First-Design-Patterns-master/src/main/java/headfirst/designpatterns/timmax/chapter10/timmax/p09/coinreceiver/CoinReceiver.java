@@ -34,8 +34,8 @@ public class CoinReceiver implements IStateOfCoinReceiver {
     }
 
     @Override
-    public void emptyCoinBox() {
-        coinReceiverStateContext.emptyCoinBox();
+    public void pullOutAllCoins() {
+        coinReceiverStateContext.pullOutAllCoins();
     }
 
     @Override

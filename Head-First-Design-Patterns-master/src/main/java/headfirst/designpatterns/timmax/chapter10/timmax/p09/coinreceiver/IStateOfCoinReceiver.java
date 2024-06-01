@@ -4,5 +4,5 @@ public interface IStateOfCoinReceiver {
     void insertCoin();
     void ejectCoin();
     void acceptCoin();
-    void emptyCoinBox();
+    void pullOutAllCoins();
 }

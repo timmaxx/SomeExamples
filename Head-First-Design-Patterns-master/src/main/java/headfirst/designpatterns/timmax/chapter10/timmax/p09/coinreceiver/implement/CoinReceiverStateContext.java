@@ -70,7 +70,7 @@ public class CoinReceiverStateContext extends StateContext implements IStateOfCo
         getCurrentState().changeState(getCrs1ReadyToReceiveCoin());
     }
 
-    void _emptyCoinBox() {
+    void _pullOutAllCoins() {
         System.out.println("Ejected " + getCountOfCoins() + " coins.");
         countOfCoins = 0;
         getCurrentState().changeState(getCrs1ReadyToReceiveCoin());
@@ -93,8 +93,8 @@ public class CoinReceiverStateContext extends StateContext implements IStateOfCo
     }
 
     @Override
-    public void emptyCoinBox() {
-        getCurrentState().emptyCoinBox();
+    public void pullOutAllCoins() {
+        getCurrentState().pullOutAllCoins();
     }
 
     // ----

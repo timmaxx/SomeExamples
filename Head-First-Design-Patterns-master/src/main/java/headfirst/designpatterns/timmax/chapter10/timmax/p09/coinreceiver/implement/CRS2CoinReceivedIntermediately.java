@@ -33,8 +33,8 @@ public class CRS2CoinReceivedIntermediately extends ACoinReceiverState {
     }
 
     @Override
-    public void emptyCoinBox() {
-        super.emptyCoinBox();
+    public void pullOutAllCoins() {
+        super.pullOutAllCoins();
         // Исключение
         System.out.println("You cannot empty the coin box, because already there is a coin. But you can eject coin.");
     }

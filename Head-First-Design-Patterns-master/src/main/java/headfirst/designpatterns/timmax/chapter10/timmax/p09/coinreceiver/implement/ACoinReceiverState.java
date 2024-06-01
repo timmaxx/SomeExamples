@@ -34,7 +34,7 @@ public abstract class ACoinReceiverState extends AState implements IStateOfCoinR
     }
 
     @Override
-    public void emptyCoinBox() {
+    public void pullOutAllCoins() {
         System.out.println("You are trying to empty the coin box.");
     }
 }

@@ -46,7 +46,7 @@ public class CoinReceiverTestDrive {
         System.out.println(coinReceiver);
         System.out.println("----");
 
-        coinReceiver.emptyCoinBox();
+        coinReceiver.pullOutAllCoins();
         System.out.println(coinReceiver);
         System.out.println("----");
     }

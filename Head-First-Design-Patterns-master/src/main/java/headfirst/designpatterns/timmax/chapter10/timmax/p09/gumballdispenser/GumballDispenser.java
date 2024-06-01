@@ -27,4 +27,9 @@ public class GumballDispenser implements IStateOfGumballDispenser {
     public void releaseGumball() {
         gumballDispenserStateContext.releaseGumball();
     }
+
+    @Override
+    public String toString() {
+        return gumballDispenserStateContext.toString();
+    }
 }

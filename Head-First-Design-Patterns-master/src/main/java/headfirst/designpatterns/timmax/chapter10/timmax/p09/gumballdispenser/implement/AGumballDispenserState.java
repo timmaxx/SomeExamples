@@ -17,4 +17,14 @@ public abstract class AGumballDispenserState extends AState implements IStateOfG
     public GumballDispenserStateContext getStateContext() {
         return (GumballDispenserStateContext) super.getStateContext();
     }
+
+    @Override
+    public void refillGumballBox() {
+        System.out.println("You are trying to refill the gumball box.");
+    }
+
+    @Override
+    public void releaseGumball() {
+        System.out.println("You are trying to release a gumball.");
+    }
 }

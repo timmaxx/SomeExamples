@@ -31,6 +31,25 @@ public class GumballDispenserStateContext extends StateContext implements IState
         return gds2ReadyToReleaseGumball;
     }
 
+    void _refillGumballBox() {
+        System.out.println("Before refilling the gumball box there are " + countOfGumballs + " gumballs in the gumball box.");
+        countOfGumballs = MAX_OF_GUMBALLS;
+        getCurrentState().changeState(getGds2ReadyToReleaseGumball());
+        System.out.println("After refilling the gumball box there are " + countOfGumballs + " gumballs in the gumball box.");
+    }
+
+    public void _releaseGumball() {
+        if (countOfGumballs <= 0) {
+            throw new RuntimeException("");
+        }
+        countOfGumballs--;
+        if (countOfGumballs <= 0) {
+            getCurrentState().changeState(getGds1GumballBoxIsEmpty());
+            return;
+        }
+        getCurrentState().changeState(getGds2ReadyToReleaseGumball());
+    }
+
     @Override
     public AGumballDispenserState getCurrentState() {
         return (AGumballDispenserState) super.getCurrentState();
@@ -44,5 +63,10 @@ public class GumballDispenserStateContext extends StateContext implements IState
     @Override
     public void releaseGumball() {
         getCurrentState().releaseGumball();
+    }
+
+    @Override
+    public String toString() {
+        return getCurrentState().toString() + ". MAX_OF_GUMBALLS = " + MAX_OF_GUMBALLS + ". countOfGumballs = " + countOfGumballs;
     }
 }

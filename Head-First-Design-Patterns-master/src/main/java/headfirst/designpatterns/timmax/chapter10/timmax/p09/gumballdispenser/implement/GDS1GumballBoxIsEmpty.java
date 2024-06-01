@@ -16,11 +16,14 @@ public class GDS1GumballBoxIsEmpty extends AGumballDispenserState {
 
     @Override
     public void refillGumballBox() {
-
+        super.refillGumballBox();
+        getStateContext()._refillGumballBox();
     }
 
     @Override
     public void releaseGumball() {
+        super.releaseGumball();
         // Исключение
+        System.out.println("You cannot to release a gumball, because there are not any gumballs in the gumball box.");
     }
 }

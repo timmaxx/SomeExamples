@@ -8,15 +8,20 @@ public class GDS2ReadyToReleaseGumball extends AGumballDispenserState {
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(GDS1GumballBoxIsEmpty.class, true)
         );
+        setOfPairDestStateAndCanSwitchWithoutParams.add(
+                new PairDestStateAndCanSwitchWithoutParams(GDS2ReadyToReleaseGumball.class, true)
+        );
     }
 
     @Override
     public void refillGumballBox() {
-        // Исключение
+        super.refillGumballBox();
+        getStateContext()._refillGumballBox();
     }
 
     @Override
     public void releaseGumball() {
-
+        super.releaseGumball();
+        getStateContext()._releaseGumball();
     }
 }

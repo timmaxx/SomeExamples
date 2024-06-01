@@ -14,17 +14,28 @@ public class CRS2CoinReceivedIntermediately extends ACoinReceiverState {
     }
 
     @Override
-    public void insertQuarter() {
+    public void insertCoin() {
+        super.insertCoin();
         // Исключение
+        System.out.println("You cannot insert another coin, because there is already a coin. But you can eject coin.");
     }
 
     @Override
-    public void ejectQuarter() {
+    public void ejectCoin() {
+        super.ejectCoin();
+        getStateContext()._ejectQuarter();
+    }
 
+    @Override
+    public void acceptCoin() {
+        super.acceptCoin();
+        getStateContext()._acceptCoin();
     }
 
     @Override
     public void emptyCoinBox() {
+        super.emptyCoinBox();
         // Исключение
+        System.out.println("You cannot empty the coin box, because already there is a coin. But you can eject coin.");
     }
 }

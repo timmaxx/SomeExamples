@@ -15,17 +15,28 @@ public class CRS1ReadyToReceiveCoin extends ACoinReceiverState {
     }
 
     @Override
-    public void insertQuarter() {
-
+    public void insertCoin() {
+        super.insertCoin();
+        getStateContext()._insertQuarter();
     }
 
     @Override
-    public void ejectQuarter() {
+    public void ejectCoin() {
+        super.ejectCoin();
         // Исключение
+        System.out.println("You cannot eject a coin, because there is no coin. But you can insert a coin" + /* or empty the coin box*/ ".");
+    }
+
+    @Override
+    public void acceptCoin() {
+        super.acceptCoin();
+        // Исключение
+        System.out.println("You cannot accept a coin, because there is no coin. But you can insert a coin" + /* or empty the coin box*/ ".");
     }
 
     @Override
     public void emptyCoinBox() {
-
+        super.emptyCoinBox();
+        getStateContext()._emptyCoinBox();
     }
 }

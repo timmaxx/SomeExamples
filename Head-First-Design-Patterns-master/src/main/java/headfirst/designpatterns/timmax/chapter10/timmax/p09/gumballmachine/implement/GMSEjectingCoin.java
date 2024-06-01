@@ -1,25 +1,25 @@
-package headfirst.designpatterns.timmax.chapter10.timmax.p09.implement;
+package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.implement;
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class SPEjectingQuarter extends AGumballMachineState {
-    public SPEjectingQuarter(StateContext stateContext) {
+public class GMSEjectingCoin extends AGumballMachineState {
+    public GMSEjectingCoin(StateContext stateContext) {
         super(stateContext);
 		// Такой вариант не описан на стр. 442, но должен быть...
 		setOfPairDestStateAndCanSwitchWithoutParams.add(
-				new PairDestStateAndCanSwitchWithoutParams(SPNoQuarter.class, true)
+				new PairDestStateAndCanSwitchWithoutParams(GMS2ReadyToReceiveCoin.class, true)
 		);
     }
 
     // Implemented methods of interface IStateOfGumballMachine:
     @Override
-    public void insertQuarter() {
+    public void insertCoin() {
         System.out.println("You can't insert a quarter, the machine is ejecting quarter");
     }
 
     @Override
-    public void ejectQuarter() {
+    public void ejectCoin() {
         System.out.println("Please wait! Your quarter is ejecting");
     }
 
@@ -29,7 +29,13 @@ public class SPEjectingQuarter extends AGumballMachineState {
     }
 
     @Override
-    public void refill() {
+    public void refillGumballBox() {
+        System.out.println("Not for this state");
+    }
+
+    @Override
+    public void pullOutAllCoins() {
+        System.out.println("Not for this state");
     }
 
     // Overridden methods of class AState:
@@ -37,7 +43,8 @@ public class SPEjectingQuarter extends AGumballMachineState {
     public void doOnEnter() {
         super.doOnEnter();
         System.out.println("Quarter returned");
-        changeState(getStateContext().getSpNoQuarter());
+        // ???
+        changeState(getStateContext().getGmsReadyToReceiveCoin());
     }
 
     // Overridden methods of class Object:

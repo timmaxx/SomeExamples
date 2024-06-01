@@ -1,17 +1,18 @@
-package headfirst.designpatterns.timmax.chapter10.timmax.p09.implement;
+package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.implement;
 
 import java.util.Random;
 
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.CRS1ReadyToReceiveCoin;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class SPHasQuarter extends AGumballMachineState {
+public class GMSCoinReceived extends AGumballMachineState {
     private final Random randomWinner = new Random(System.currentTimeMillis());
 
-    public SPHasQuarter(StateContext stateContext) {
+    public GMSCoinReceived(StateContext stateContext) {
         super(stateContext);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
-                new PairDestStateAndCanSwitchWithoutParams(SPEjectingQuarter.class, true)
+                new PairDestStateAndCanSwitchWithoutParams(GMSEjectingCoin.class, true)
         );
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SPGivingGumOne.class, true)
@@ -23,19 +24,22 @@ public class SPHasQuarter extends AGumballMachineState {
 
     // Implemented methods of the IStateOfGumballMachine interface:
     @Override
-    public void insertQuarter() {
+    public void insertCoin() {
         System.out.println("You can't insert another quarter");
     }
 
     @Override
-    public void ejectQuarter() {
-        changeState(getStateContext().getSpEjectingQuarter());
+    public void ejectCoin() {
+        getStateContext().getCoinReceiver().ejectCoin();
+        if (getStateContext().getCoinReceiver().getCurrentState() instanceof CRS1ReadyToReceiveCoin) {
+            changeState(getStateContext().getGmsEjectingCoin());
+        }
     }
 
     @Override
     public void turnCrank() {
         int winner = randomWinner.nextInt(10);
-        if ((winner == 0) && (getStateContext().getCountOfGumballs() > 1)) {
+        if ((winner == 0) && (getStateContext().getGumballDispenser().getCountOfGumballs() > 1)) {
             changeState(getStateContext().getSpGivingGumWinner());
         } else {
             changeState(getStateContext().getSpGivingGumOne());
@@ -43,7 +47,13 @@ public class SPHasQuarter extends AGumballMachineState {
     }
 
     @Override
-    public void refill() {
+    public void refillGumballBox() {
+        System.out.println("Not for this state");
+    }
+
+    @Override
+    public void pullOutAllCoins() {
+        System.out.println("Not for this state");
     }
 
     // Overridden methods of class AState:

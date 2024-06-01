@@ -1,6 +1,6 @@
-package headfirst.designpatterns.timmax.chapter10.timmax.p09;
+package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.implement.GumballMachineStateContext;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.implement.GumballMachineStateContext;
 
 public class GumballMachine implements IStateOfGumballMachine {
 	private final IStateOfGumballMachine stateContext;
@@ -11,13 +11,13 @@ public class GumballMachine implements IStateOfGumballMachine {
 
 	// Implemented methods of interface IStateOfGumballMachine:
 	@Override
-	public void insertQuarter() {
-		stateContext.insertQuarter();
+	public void insertCoin() {
+		stateContext.insertCoin();
 	}
 
 	@Override
-	public void ejectQuarter() {
-		stateContext.ejectQuarter();
+	public void ejectCoin() {
+		stateContext.ejectCoin();
 	}
 
 	@Override
@@ -26,8 +26,13 @@ public class GumballMachine implements IStateOfGumballMachine {
 	}
 
 	@Override
-	public void refill() {
-		stateContext.refill();
+	public void refillGumballBox() {
+		stateContext.refillGumballBox();
+	}
+
+	@Override
+	public void pullOutAllCoins() {
+		stateContext.pullOutAllCoins();
 	}
 
 	// Overridden methods of class Object:

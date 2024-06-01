@@ -1,8 +1,8 @@
-package headfirst.designpatterns.timmax.chapter10.timmax.p09;
+package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine;
 
 public interface IStateOfGumballMachine {
-	void insertQuarter();
-	void ejectQuarter();
+	void insertCoin();
+	void ejectCoin();
 	void turnCrank();
 
 	// ToDo: поскольку монеты копятся, то нужно делать их выемку с распечаткой отчёта.
@@ -15,5 +15,7 @@ public interface IStateOfGumballMachine {
 	// ToDo: refill() сделать разный (нужно ввести ёмкость бака для гумболов):
 	//       1. дополнить на N гумболов (если дополнение превышает ёмкость бака, как-то обрабатывать).
 	//       2. дополнить "до горлышка".
-	void refill();
+	void refillGumballBox();
+
+	void pullOutAllCoins();
 }

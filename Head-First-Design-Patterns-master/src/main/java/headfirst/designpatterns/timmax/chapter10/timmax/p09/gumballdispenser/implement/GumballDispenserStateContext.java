@@ -4,12 +4,12 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateCo
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.IStateOfGumballDispenser;
 
 public class GumballDispenserStateContext extends StateContext implements IStateOfGumballDispenser {
-    public static int MAX_OF_GUMBALLS = 6;
-
-    private int countOfGumballs;
+    public final static int MAX_OF_GUMBALLS = 6;
 
     private final GDS1GumballBoxIsEmpty gds1GumballBoxIsEmpty;
     private final GDS2ReadyToReleaseGumball gds2ReadyToReleaseGumball;
+
+    private int countOfGumballs;
 
     public GumballDispenserStateContext() {
         gds1GumballBoxIsEmpty = new GDS1GumballBoxIsEmpty(this);

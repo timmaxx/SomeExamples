@@ -44,7 +44,7 @@ public abstract class AState implements IState {
     public void doOnExit() {
     }
 
-
+    // class Object
     @Override
     public String toString() {
         return this.getClass().getSimpleName();

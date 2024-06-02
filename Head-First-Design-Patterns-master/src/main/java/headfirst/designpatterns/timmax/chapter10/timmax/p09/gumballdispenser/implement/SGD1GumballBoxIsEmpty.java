@@ -2,15 +2,15 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.im
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 
-public class GDS1GumballBoxIsEmpty extends AGumballDispenserState {
-    public GDS1GumballBoxIsEmpty(GumballDispenserStateContext stateContext) {
+public class SGD1GumballBoxIsEmpty extends AStateOfGumballDispenser {
+    public SGD1GumballBoxIsEmpty(StateContextOfGumballDispenser stateContext) {
         super(stateContext);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 // ToDo: в комментарии пример некорректного использования PairDestStateAndCanSwitchWithoutParams,
                 //       который будет откомпилирован, но по сути не правильный (ведь сейчас менее строго extend IState).
-                //       Нужно сделать так, что-бы в качестве параметра можно было передавать класс типа extend ACoinReceiverState
-                // new PairDestStateAndCanSwitchWithoutParams(CRS2CoinReceivedIntermediately.class, true)
-                new PairDestStateAndCanSwitchWithoutParams(GDS2ReadyToReleaseGumball.class, true)
+                //       Нужно сделать так, что-бы в качестве параметра можно было передавать класс типа extend AStateOfCoinReceiver
+                // new PairDestStateAndCanSwitchWithoutParams(SCR2CoinReceivedIntermediately.class, true)
+                new PairDestStateAndCanSwitchWithoutParams(SGD2ReadyToReleaseGumball.class, true)
         );
     }
 

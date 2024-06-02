@@ -44,7 +44,7 @@ public class CoinReceiverStateContext extends StateContext implements IStateOfCo
     // ----
     void _insertQuarter() {
         if (countOfCoins >= MAX_OF_COINS) {
-            setCurrentState(crs3CoinBoxCrowded);
+            getCurrentState().changeState(getCrs3CoinBoxCrowded());
             throw new RuntimeException();
         }
         getCurrentState().changeState(getCrs2CoinReceivedIntermediately());
@@ -71,12 +71,12 @@ public class CoinReceiverStateContext extends StateContext implements IStateOfCo
     }
 
     void _pullOutAllCoins() {
-        System.out.println("Ejected " + getCountOfCoins() + " coins.");
+        System.out.println("All the coins (" + getCountOfCoins() + ") have been pulled out.");
         countOfCoins = 0;
         getCurrentState().changeState(getCrs1ReadyToReceiveCoin());
     }
 
-    // ----
+    // interface IStateOfCoinReceiver
     @Override
     public void insertCoin() {
         getCurrentState().insertCoin();
@@ -97,7 +97,7 @@ public class CoinReceiverStateContext extends StateContext implements IStateOfCo
         getCurrentState().pullOutAllCoins();
     }
 
-    // ----
+    // class Object
     @Override
     public String toString() {
         return getCurrentState().toString() + ". MAX_OF_COINS = " + MAX_OF_COINS + ". countOfCoins = " + countOfCoins;

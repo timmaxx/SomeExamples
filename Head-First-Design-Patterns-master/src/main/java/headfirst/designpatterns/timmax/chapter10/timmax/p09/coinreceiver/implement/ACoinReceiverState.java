@@ -8,6 +8,7 @@ public abstract class ACoinReceiverState extends AState implements IStateOfCoinR
         super(stateContext);
     }
 
+    // class AState
     @Override
     public void doOnEnter() {
         System.out.println("Coin receiver has entered into state '" + this + "'");
@@ -18,6 +19,7 @@ public abstract class ACoinReceiverState extends AState implements IStateOfCoinR
         return (CoinReceiverStateContext) super.getStateContext();
     }
 
+    // interface IStateOfCoinReceiver
     @Override
     public void insertCoin() {
         System.out.println("You are trying to insert a coin.");

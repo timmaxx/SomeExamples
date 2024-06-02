@@ -18,6 +18,7 @@ public class CoinReceiver implements IStateOfCoinReceiver {
         return coinReceiverStateContext.getCountOfCoins();
     }
 
+    // interface IStateOfCoinReceiver
     @Override
     public void insertCoin() {
         coinReceiverStateContext.insertCoin();
@@ -38,6 +39,7 @@ public class CoinReceiver implements IStateOfCoinReceiver {
         coinReceiverStateContext.pullOutAllCoins();
     }
 
+    // class Object
     @Override
     public String toString() {
         return coinReceiverStateContext.toString();

@@ -15,10 +15,6 @@ public abstract class AState implements IState {
         this.setOfPairDestStateAndCanSwitchWithoutParams = new HashSet<>();
     }
 
-    public StateContext getStateContext() {
-        return stateContext;
-    }
-
     private void checkPosibleToChangeState(IState state) {
         for (PairDestStateAndCanSwitchWithoutParams pairDestStateAndCanSwitchWithoutParams : setOfPairDestStateAndCanSwitchWithoutParams) {
             if (Classes.isInstanceOf(state, pairDestStateAndCanSwitchWithoutParams.destinationStateClass())
@@ -31,9 +27,14 @@ public abstract class AState implements IState {
 
     // Implemented methods of interface IState
     @Override
+    public StateContext getStateContext() {
+        return stateContext;
+    }
+
+    @Override
     public final void changeState(IState state) {
         checkPosibleToChangeState(state);
-        stateContext.setCurrentState(state);
+        stateContext.changeState(state);
     }
 
     @Override

@@ -1,9 +1,9 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.ICoinReceiverStateContext;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.IStateContextOfCoinReceiver;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
 
-public class CoinReceiverStateContext extends StateContext implements ICoinReceiverStateContext {
+public class StateContextOfCoinReceiver extends StateContext implements IStateContextOfCoinReceiver {
     public static final int MAX_OF_COINS = 4;
     private int countOfCoins;
 
@@ -11,7 +11,7 @@ public class CoinReceiverStateContext extends StateContext implements ICoinRecei
     private final CRS2CoinReceivedIntermediately crs2CoinReceivedIntermediately;
     private final CRS3CoinBoxCrowded crs3CoinBoxCrowded;
 
-    public CoinReceiverStateContext() {
+    public StateContextOfCoinReceiver() {
         crs1ReadyToReceiveCoin = new CRS1ReadyToReceiveCoin(this);
         crs2CoinReceivedIntermediately = new CRS2CoinReceivedIntermediately(this);
         crs3CoinBoxCrowded = new CRS3CoinBoxCrowded(this);
@@ -64,7 +64,7 @@ public class CoinReceiverStateContext extends StateContext implements ICoinRecei
         getCurrentState().changeState(getCrs1ReadyToReceiveCoin());
     }
 
-    // interface ICoinReceiverStateContext
+    // interface IStateContextOfCoinReceiver
     @Override
     public final int getCountOfCoins() {
         return countOfCoins;
@@ -72,8 +72,8 @@ public class CoinReceiverStateContext extends StateContext implements ICoinRecei
 
     // class StateContext
     @Override
-    public ACoinReceiverState getCurrentState() {
-        return (ACoinReceiverState) super.getCurrentState();
+    public AStateOfCoinReceiver getCurrentState() {
+        return (AStateOfCoinReceiver) super.getCurrentState();
     }
 
     // interface IStateOfCoinReceiver

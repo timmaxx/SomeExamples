@@ -11,6 +11,7 @@ public abstract class ACoinReceiverState extends AState implements IStateOfCoinR
     // class AState
     @Override
     public void doOnEnter() {
+        super.doOnEnter();
         System.out.println("Coin receiver has entered into state '" + this + "'");
     }
 
@@ -37,6 +38,6 @@ public abstract class ACoinReceiverState extends AState implements IStateOfCoinR
 
     @Override
     public void pullOutAllCoins() {
-        System.out.println("You are trying to empty the coin box.");
+        System.out.println("You are trying to pull all the coins out.");
     }
 }

@@ -2,11 +2,11 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implem
 
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 
-public class CRS3CoinBoxCrowded extends AStateOfCoinReceiver {
-    public CRS3CoinBoxCrowded(StateContextOfCoinReceiver stateContext) {
+public class SCR3CoinBoxCrowded extends AStateOfCoinReceiver {
+    public SCR3CoinBoxCrowded(StateContextOfCoinReceiver stateContext) {
         super(stateContext);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
-                new PairDestStateAndCanSwitchWithoutParams(CRS1ReadyToReceiveCoin.class, true)
+                new PairDestStateAndCanSwitchWithoutParams(SCR1ReadyToReceiveCoin.class, true)
         );
     }
 

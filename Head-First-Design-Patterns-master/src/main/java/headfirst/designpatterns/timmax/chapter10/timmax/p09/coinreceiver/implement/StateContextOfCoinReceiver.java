@@ -5,63 +5,63 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateCo
 
 public class StateContextOfCoinReceiver extends StateContext implements IStateContextOfCoinReceiver {
     public static final int MAX_OF_COINS = 4;
+    private final SCR1ReadyToReceiveCoin scr1ReadyToReceiveCoin;
+    private final SCR2CoinReceivedIntermediately scr2CoinReceivedIntermediately;
+    private final SCR3CoinBoxCrowded scr3CoinBoxCrowded;
+
     private int countOfCoins;
 
-    private final CRS1ReadyToReceiveCoin crs1ReadyToReceiveCoin;
-    private final CRS2CoinReceivedIntermediately crs2CoinReceivedIntermediately;
-    private final CRS3CoinBoxCrowded crs3CoinBoxCrowded;
-
     public StateContextOfCoinReceiver() {
-        crs1ReadyToReceiveCoin = new CRS1ReadyToReceiveCoin(this);
-        crs2CoinReceivedIntermediately = new CRS2CoinReceivedIntermediately(this);
-        crs3CoinBoxCrowded = new CRS3CoinBoxCrowded(this);
+        scr1ReadyToReceiveCoin = new SCR1ReadyToReceiveCoin(this);
+        scr2CoinReceivedIntermediately = new SCR2CoinReceivedIntermediately(this);
+        scr3CoinBoxCrowded = new SCR3CoinBoxCrowded(this);
 
         countOfCoins = 0;
-        changeState(crs1ReadyToReceiveCoin);
+        changeState(scr1ReadyToReceiveCoin);
     }
 
-    public final CRS1ReadyToReceiveCoin getCrs1ReadyToReceiveCoin() {
-        return crs1ReadyToReceiveCoin;
+    public final SCR1ReadyToReceiveCoin getScr1ReadyToReceiveCoin() {
+        return scr1ReadyToReceiveCoin;
     }
 
-    public final CRS2CoinReceivedIntermediately getCrs2CoinReceivedIntermediately() {
-        return crs2CoinReceivedIntermediately;
+    public final SCR2CoinReceivedIntermediately getScr2CoinReceivedIntermediately() {
+        return scr2CoinReceivedIntermediately;
     }
 
-    public final CRS3CoinBoxCrowded getCrs3CoinBoxCrowded() {
-        return crs3CoinBoxCrowded;
+    public final SCR3CoinBoxCrowded getScr3CoinBoxCrowded() {
+        return scr3CoinBoxCrowded;
     }
 
     // ----
     void _insertQuarter() {
         if (countOfCoins >= MAX_OF_COINS) {
-            getCurrentState().changeState(getCrs3CoinBoxCrowded());
+            getCurrentState().changeState(getScr3CoinBoxCrowded());
             throw new RuntimeException();
         }
-        getCurrentState().changeState(getCrs2CoinReceivedIntermediately());
+        getCurrentState().changeState(getScr2CoinReceivedIntermediately());
     }
 
     void _ejectQuarter() {
-        getCurrentState().changeState(getCrs1ReadyToReceiveCoin());
+        getCurrentState().changeState(getScr1ReadyToReceiveCoin());
     }
 
     void _acceptCoin() {
         if (countOfCoins >= MAX_OF_COINS) {
-            getCurrentState().changeState(getCrs3CoinBoxCrowded());
+            getCurrentState().changeState(getScr3CoinBoxCrowded());
             throw new RuntimeException();
         }
         countOfCoins++;
         if (countOfCoins >= MAX_OF_COINS) {
-            getCurrentState().changeState(getCrs3CoinBoxCrowded());
+            getCurrentState().changeState(getScr3CoinBoxCrowded());
             return;
         }
-        getCurrentState().changeState(getCrs1ReadyToReceiveCoin());
+        getCurrentState().changeState(getScr1ReadyToReceiveCoin());
     }
 
     void _pullOutAllCoins() {
         System.out.println("All the coins (" + getCountOfCoins() + ") have been pulled out.");
         countOfCoins = 0;
-        getCurrentState().changeState(getCrs1ReadyToReceiveCoin());
+        getCurrentState().changeState(getScr1ReadyToReceiveCoin());
     }
 
     // interface IStateContextOfCoinReceiver

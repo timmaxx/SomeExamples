@@ -1,10 +1,9 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state;
 
 public abstract class StateContext implements IStateContext {
-    private IState currentState;
+    private AState currentState;
 
-    @Override
-    public final void changeState(IState newState) {
+    protected final void changeState(AState newState) {
         if (this.currentState != null) {
             this.currentState.doOnExit();
         }

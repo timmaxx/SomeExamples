@@ -6,12 +6,12 @@ import java.util.Set;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.classes.Classes;
 
 public abstract class AState implements IState {
-    private final IStateContext iStateContext;
+    private final StateContext stateContext;
 
     protected final Set<PairDestStateAndCanSwitchWithoutParams> setOfPairDestStateAndCanSwitchWithoutParams;
 
-    public AState(IStateContext iStateContext) {
-        this.iStateContext = iStateContext;
+    public AState(StateContext stateContext) {
+        this.stateContext = stateContext;
         this.setOfPairDestStateAndCanSwitchWithoutParams = new HashSet<>();
     }
 
@@ -25,24 +25,21 @@ public abstract class AState implements IState {
         throw new RuntimeException("You cannot change state from '" + this + "' to '" + state + "'!");
     }
 
+    protected final void changeState(AState state) {
+        checkPosibleToChangeState(state);
+        stateContext.changeState(state);
+    }
+
+    protected void doOnEnter() {
+    }
+
+    protected void doOnExit() {
+    }
+
     // Implemented methods of interface IState
     @Override
-    public IStateContext getIStateContext() {
-        return iStateContext;
-    }
-
-    @Override
-    public final void changeState(IState state) {
-        checkPosibleToChangeState(state);
-        iStateContext.changeState(state);
-    }
-
-    @Override
-    public void doOnEnter() {
-    }
-
-    @Override
-    public void doOnExit() {
+    public IStateContext getStateContext() {
+        return stateContext;
     }
 
     // class Object

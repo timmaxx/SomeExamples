@@ -19,32 +19,24 @@ public class StateContextOfGumballDispenser extends StateContext implements ISta
         changeState(sgd1GumballBoxIsEmpty);
     }
 
-    public final SGD1GumballBoxIsEmpty getSgd1GumballBoxIsEmpty() {
-        return sgd1GumballBoxIsEmpty;
-    }
-
-    public final SGD2ReadyToReleaseGumball getSgd2ReadyToReleaseGumball() {
-        return sgd2ReadyToReleaseGumball;
-    }
-
     // ----
     void _refillGumballBox() {
         System.out.println("Before refilling the gumball box there are " + countOfGumballs + " gumballs in the gumball box.");
         countOfGumballs = MAX_OF_GUMBALLS;
-        getCurrentState().changeState(getSgd2ReadyToReleaseGumball());
+        changeState(sgd2ReadyToReleaseGumball);
         System.out.println("After refilling the gumball box there are " + countOfGumballs + " gumballs in the gumball box.");
     }
 
-    public void _releaseGumball() {
+    void _releaseGumball() {
         if (countOfGumballs <= 0) {
             throw new RuntimeException("The gumball box is empty, but it doesn't have to be.");
         }
         countOfGumballs--;
         if (countOfGumballs <= 0) {
-            getCurrentState().changeState(getSgd1GumballBoxIsEmpty());
+            changeState(sgd1GumballBoxIsEmpty);
             return;
         }
-        getCurrentState().changeState(getSgd2ReadyToReleaseGumball());
+        changeState(sgd2ReadyToReleaseGumball);
     }
 
     // interface IStateContextOfGumballDispenser

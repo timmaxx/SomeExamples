@@ -5,6 +5,7 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateCo
 
 public class StateContextOfCoinReceiver extends StateContext implements IStateContextOfCoinReceiver {
     public static final int MAX_OF_COINS = 4;
+
     private final SCR1ReadyToReceiveCoin scr1ReadyToReceiveCoin;
     private final SCR2CoinReceivedIntermediately scr2CoinReceivedIntermediately;
     private final SCR3CoinBoxCrowded scr3CoinBoxCrowded;
@@ -20,48 +21,36 @@ public class StateContextOfCoinReceiver extends StateContext implements IStateCo
         changeState(scr1ReadyToReceiveCoin);
     }
 
-    public final SCR1ReadyToReceiveCoin getScr1ReadyToReceiveCoin() {
-        return scr1ReadyToReceiveCoin;
-    }
-
-    public final SCR2CoinReceivedIntermediately getScr2CoinReceivedIntermediately() {
-        return scr2CoinReceivedIntermediately;
-    }
-
-    public final SCR3CoinBoxCrowded getScr3CoinBoxCrowded() {
-        return scr3CoinBoxCrowded;
-    }
-
     // ----
-    void _insertQuarter() {
+    void _insertCoin() {
         if (countOfCoins >= MAX_OF_COINS) {
-            getCurrentState().changeState(getScr3CoinBoxCrowded());
-            throw new RuntimeException();
+            changeState(scr3CoinBoxCrowded);
+            throw new RuntimeException("It is imposible to insert a coin when the coin box is already crowded.");
         }
-        getCurrentState().changeState(getScr2CoinReceivedIntermediately());
+        changeState(scr2CoinReceivedIntermediately);
     }
 
-    void _ejectQuarter() {
-        getCurrentState().changeState(getScr1ReadyToReceiveCoin());
+    void _ejectCoin() {
+        changeState(scr1ReadyToReceiveCoin);
     }
 
     void _acceptCoin() {
         if (countOfCoins >= MAX_OF_COINS) {
-            getCurrentState().changeState(getScr3CoinBoxCrowded());
-            throw new RuntimeException();
+            changeState(scr3CoinBoxCrowded);
+            throw new RuntimeException("It is imposible to accept a coin when the coin box is already crowded.");
         }
         countOfCoins++;
         if (countOfCoins >= MAX_OF_COINS) {
-            getCurrentState().changeState(getScr3CoinBoxCrowded());
+            changeState(scr3CoinBoxCrowded);
             return;
         }
-        getCurrentState().changeState(getScr1ReadyToReceiveCoin());
+        changeState(scr1ReadyToReceiveCoin);
     }
 
     void _pullOutAllCoins() {
         System.out.println("All the coins (" + getCountOfCoins() + ") have been pulled out.");
         countOfCoins = 0;
-        getCurrentState().changeState(getScr1ReadyToReceiveCoin());
+        changeState(scr1ReadyToReceiveCoin);
     }
 
     // interface IStateContextOfCoinReceiver

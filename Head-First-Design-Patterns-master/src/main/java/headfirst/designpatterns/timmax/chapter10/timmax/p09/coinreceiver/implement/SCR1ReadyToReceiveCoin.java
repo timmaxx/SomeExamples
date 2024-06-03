@@ -17,7 +17,7 @@ public class SCR1ReadyToReceiveCoin extends AStateOfCoinReceiver {
     @Override
     public void insertCoin() {
         super.insertCoin();
-        getStateContext()._insertQuarter();
+        getStateContext()._insertCoin();
     }
 
     @Override

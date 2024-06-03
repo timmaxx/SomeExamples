@@ -23,7 +23,7 @@ public class SCR2CoinReceivedIntermediately extends AStateOfCoinReceiver {
     @Override
     public void ejectCoin() {
         super.ejectCoin();
-        getStateContext()._ejectQuarter();
+        getStateContext()._ejectCoin();
     }
 
     @Override

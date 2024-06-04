@@ -9,7 +9,7 @@ public class SCR1ReadyToReceiveCoin extends AStateOfCoinReceiver {
                 // ToDo: в комментарии пример некорректного использования PairDestStateAndCanSwitchWithoutParams,
                 //       который будет откомпилирован, но по сути не правильный (ведь сейчас менее строго extend IState).
                 //       Нужно сделать так, что-бы в качестве параметра можно было передавать класс типа extend AStateOfCoinReceiver
-                // new PairDestStateAndCanSwitchWithoutParams(GMS2ReadyToReceiveCoin.class, true)
+                // new PairDestStateAndCanSwitchWithoutParams(SGM2ReadyToReceiveCoinAndDispenseGumball.class, true)
                 new PairDestStateAndCanSwitchWithoutParams(SCR2CoinReceivedIntermediately.class, true)
         );
     }

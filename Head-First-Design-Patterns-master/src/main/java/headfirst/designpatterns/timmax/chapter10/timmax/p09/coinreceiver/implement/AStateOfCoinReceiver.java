@@ -23,21 +23,21 @@ public abstract class AStateOfCoinReceiver extends AState implements IStateOfCoi
     // interface IStateOfCoinReceiver
     @Override
     public void insertCoin() {
-        System.out.println("You are trying to insert a coin.");
+        System.out.println("CR. You are trying to insert a coin.");
     }
 
     @Override
     public void ejectCoin() {
-        System.out.println("You are trying to eject a coin.");
+        System.out.println("CR. You are trying to eject a coin.");
     }
 
     @Override
     public void acceptCoin() {
-        System.out.println("You are trying to accept a coin.");
+        System.out.println("CR. You are trying to accept a coin.");
     }
 
     @Override
     public void pullOutAllCoins() {
-        System.out.println("You are trying to pull all the coins out.");
+        System.out.println("CR. You are trying to pull all the coins out.");
     }
 }

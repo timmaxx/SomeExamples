@@ -22,11 +22,11 @@ public abstract class AStateOfGumballDispenser extends AState implements IStateO
     // interface IStateOfGumballDispenser
     @Override
     public void refillGumballBox() {
-        System.out.println("You are trying to refill the gumball box.");
+        System.out.println("GD. You are trying to refill the gumball box.");
     }
 
     @Override
     public void releaseGumball() {
-        System.out.println("You are trying to release a gumball.");
+        System.out.println("GD. You are trying to release a gumball.");
     }
 }

@@ -24,6 +24,6 @@ public class SGD1GumballBoxIsEmpty extends AStateOfGumballDispenser {
     public void releaseGumball() {
         super.releaseGumball();
         // Исключение
-        System.out.println("You cannot to release a gumball, because there are not any gumballs in the gumball box.");
+        System.out.println("GD. You cannot to release a gumball, because there are not any gumballs in the gumball box.");
     }
 }

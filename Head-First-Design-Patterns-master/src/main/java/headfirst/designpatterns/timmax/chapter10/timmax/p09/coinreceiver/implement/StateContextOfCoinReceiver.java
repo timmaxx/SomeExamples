@@ -23,6 +23,7 @@ public class StateContextOfCoinReceiver extends StateContext implements IStateCo
 
     // ----
     void _insertCoin() {
+        // 1. Проверка, что метод можно вызывать, если нельзя, то бросить исключение.
         if (countOfCoins >= MAX_OF_COINS) {
             changeState(scr3CoinBoxCrowded);
             throw new RuntimeException("CR. It is imposible to insert a coin when the coin box is already crowded.");
@@ -36,14 +37,20 @@ public class StateContextOfCoinReceiver extends StateContext implements IStateCo
     }
 
     void _ejectCoin() {
+        // 2. Действие перед переходом в другое состояние.
+        System.out.println("CR. The coin has ejected.");
+        // 3. Выбор состояния, в которое нужно перейти и переход в него.
         changeState(scr1ReadyToReceiveCoin);
     }
 
     void _acceptCoin() {
-        if (countOfCoins >= MAX_OF_COINS) {
+        // 1. Проверка, что метод можно вызывать, если нельзя, то бросить исключение.
+        if (countOfCoins >= MAX_OF_COINS) { // Это по сути проверка текущего состояния по основному признаку.
             changeState(scr3CoinBoxCrowded);
             throw new RuntimeException("CR. It is imposible to accept a coin when the coin box is already crowded.");
         }
+
+        // 2. Действие перед переходом в другое состояние.
         countOfCoins++;
         System.out.println("CR. The coin has accepted.");
 
@@ -56,8 +63,11 @@ public class StateContextOfCoinReceiver extends StateContext implements IStateCo
     }
 
     void _pullOutAllCoins() {
-        System.out.println("All the coins (" + getCountOfCoins() + ") have been pulled out.");
+        // 2. Действие перед переходом в другое состояние.
+        System.out.println("CR. All the coins (" + getCountOfCoins() + ") have been pulled out.");
         countOfCoins = 0;
+
+        // 3. Выбор состояния, в которое нужно перейти и переход в него.
         changeState(scr1ReadyToReceiveCoin);
     }
 

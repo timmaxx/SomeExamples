@@ -24,14 +24,14 @@ public class SCR1ReadyToReceiveCoin extends AStateOfCoinReceiver {
     public void ejectCoin() {
         super.ejectCoin();
         // Исключение
-        System.out.println("You cannot eject a coin, because there is no coin. But you can insert a coin" + /* or empty the coin box*/ ".");
+        System.out.println("CR. You cannot eject a coin, because there is no coin. But you can insert a coin" + /* or empty the coin box*/ ".");
     }
 
     @Override
     public void acceptCoin() {
         super.acceptCoin();
         // Исключение
-        System.out.println("You cannot accept a coin, because there is no coin. But you can insert a coin" + /* or empty the coin box*/ ".");
+        System.out.println("CR. You cannot accept a coin, because there is no coin. But you can insert a coin" + /* or empty the coin box*/ ".");
     }
 
     @Override

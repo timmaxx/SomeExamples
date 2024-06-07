@@ -25,8 +25,13 @@ public class StateContextOfCoinReceiver extends StateContext implements IStateCo
     void _insertCoin() {
         if (countOfCoins >= MAX_OF_COINS) {
             changeState(scr3CoinBoxCrowded);
-            throw new RuntimeException("It is imposible to insert a coin when the coin box is already crowded.");
+            throw new RuntimeException("CR. It is imposible to insert a coin when the coin box is already crowded.");
         }
+
+        // 2. Действие перед переходом в другое состояние.
+        System.out.println("CR. A coin has inserted.");
+
+        // 3. Выбор состояния, в которое нужно перейти и переход в него.
         changeState(scr2CoinReceivedIntermediately);
     }
 
@@ -37,9 +42,12 @@ public class StateContextOfCoinReceiver extends StateContext implements IStateCo
     void _acceptCoin() {
         if (countOfCoins >= MAX_OF_COINS) {
             changeState(scr3CoinBoxCrowded);
-            throw new RuntimeException("It is imposible to accept a coin when the coin box is already crowded.");
+            throw new RuntimeException("CR. It is imposible to accept a coin when the coin box is already crowded.");
         }
         countOfCoins++;
+        System.out.println("CR. The coin has accepted.");
+
+        // 3. Выбор состояния, в которое нужно перейти и переход в него.
         if (countOfCoins >= MAX_OF_COINS) {
             changeState(scr3CoinBoxCrowded);
             return;

@@ -17,7 +17,7 @@ public class SCR2CoinReceivedIntermediately extends AStateOfCoinReceiver {
     public void insertCoin() {
         super.insertCoin();
         // Исключение
-        System.out.println("You cannot insert another coin, because there is already a coin. But you can eject a coin.");
+        System.out.println("CR. You cannot insert another coin, because there is already a coin. But you can eject a coin.");
     }
 
     @Override
@@ -36,6 +36,6 @@ public class SCR2CoinReceivedIntermediately extends AStateOfCoinReceiver {
     public void pullOutAllCoins() {
         super.pullOutAllCoins();
         // Исключение
-        System.out.println("You cannot pull all the coins out, because already there is a coin. But you can eject a coin.");
+        System.out.println("CR. You cannot pull all the coins out, because already there is a coin. But you can eject a coin.");
     }
 }

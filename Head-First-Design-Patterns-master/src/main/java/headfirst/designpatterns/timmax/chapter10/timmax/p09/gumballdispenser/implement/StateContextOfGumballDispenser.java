@@ -21,17 +21,28 @@ public class StateContextOfGumballDispenser extends StateContext implements ISta
 
     // ----
     void _refillGumballBox() {
-        System.out.println("Before refilling the gumball box there are " + countOfGumballs + " gumballs in the gumball box.");
+        // 1. Проверка, что метод можно вызывать, если нельзя, то бросить исключение.
+
+        // 2. Действие перед переходом в другое состояние.
+        System.out.println("GD. Before refilling the gumball box there are " + countOfGumballs + " gumballs in the gumball box.");
         countOfGumballs = MAX_OF_GUMBALLS;
+        System.out.println("GD. After refilling the gumball box there are " + countOfGumballs + " gumballs in the gumball box.");
+
+        // 3. Выбор состояния, в которое нужно перейти и переход в него.
         changeState(sgd2ReadyToReleaseGumball);
-        System.out.println("After refilling the gumball box there are " + countOfGumballs + " gumballs in the gumball box.");
     }
 
     void _releaseGumball() {
+        // 1. Проверка, что метод можно вызывать, если нельзя, то бросить исключение.
         if (countOfGumballs <= 0) {
-            throw new RuntimeException("The gumball box is empty, but it doesn't have to be.");
+            throw new RuntimeException("GD. The gumball box is empty, but it doesn't have to be.");
         }
+
+        // 2. Действие перед переходом в другое состояние.
         countOfGumballs--;
+        System.out.println("GD. A gumball has rolled out.");
+
+        // 3. Выбор состояния, в которое нужно перейти и переход в него.
         if (countOfGumballs <= 0) {
             changeState(sgd1GumballBoxIsEmpty);
             return;

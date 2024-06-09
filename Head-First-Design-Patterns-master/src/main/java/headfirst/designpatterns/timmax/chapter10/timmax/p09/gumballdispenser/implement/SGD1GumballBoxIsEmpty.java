@@ -17,7 +17,7 @@ public class SGD1GumballBoxIsEmpty extends AStateOfGumballDispenser {
     @Override
     public void refillGumballBox() {
         super.refillGumballBox();
-        this.getStateAutomaton()._refillGumballBox();
+        getStateAutomaton()._refillGumballBox();
     }
 
     @Override

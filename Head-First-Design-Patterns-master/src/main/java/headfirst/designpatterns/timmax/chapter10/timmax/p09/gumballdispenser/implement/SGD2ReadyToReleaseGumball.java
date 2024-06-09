@@ -16,12 +16,12 @@ public class SGD2ReadyToReleaseGumball extends AStateOfGumballDispenser {
     @Override
     public void refillGumballBox() {
         super.refillGumballBox();
-        this.getStateAutomaton()._refillGumballBox();
+        getStateAutomaton()._refillGumballBox();
     }
 
     @Override
     public void releaseGumball() {
         super.releaseGumball();
-        this.getStateAutomaton()._releaseGumball();
+        getStateAutomaton()._releaseGumball();
     }
 }

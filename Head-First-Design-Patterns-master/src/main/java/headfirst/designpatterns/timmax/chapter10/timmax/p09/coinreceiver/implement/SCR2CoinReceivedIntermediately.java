@@ -3,8 +3,8 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implem
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 
 public class SCR2CoinReceivedIntermediately extends AStateOfCoinReceiver {
-    public SCR2CoinReceivedIntermediately(StateContextOfCoinReceiver stateContext) {
-        super(stateContext);
+    public SCR2CoinReceivedIntermediately(CoinReceiver coinReceiver) {
+        super(coinReceiver);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SCR1ReadyToReceiveCoin.class, true)
         );
@@ -23,13 +23,13 @@ public class SCR2CoinReceivedIntermediately extends AStateOfCoinReceiver {
     @Override
     public void ejectCoin() {
         super.ejectCoin();
-        getStateContext()._ejectCoin();
+        this.getStateAutomaton()._ejectCoin();
     }
 
     @Override
     public void acceptCoin() {
         super.acceptCoin();
-        getStateContext()._acceptCoin();
+        this.getStateAutomaton()._acceptCoin();
     }
 
     @Override

@@ -1,16 +1,16 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.implement;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.CoinReceiver;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.StateContextOfCoinReceiver;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.SCR1ReadyToReceiveCoin;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.SCR2CoinReceivedIntermediately;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.implement.StateContextOfGumballDispenser;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.implement.SGD2ReadyToReleaseGumball;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.IStateContextOfGumballMachine;
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.GumballDispenser;
 
 public class StateContextOfGumballMachine extends StateContext implements IStateContextOfGumballMachine {
-    private final CoinReceiver coinReceiver;
-    private final GumballDispenser gumballDispenser;
+    private final StateContextOfCoinReceiver coinReceiver;
+    private final StateContextOfGumballDispenser gumballDispenser;
 
     private final SGM1SoldOutOrCoinBoxCrowded sgm1SoldOutOrCoinBoxCrowded;
     private final SGM2ReadyToReceiveCoinAndDispenseGumball sgm2ReadyToReceiveCoinAndDispenseGumball;
@@ -19,8 +19,8 @@ public class StateContextOfGumballMachine extends StateContext implements IState
     // private int countOfWinnerGumballs;
 
     public StateContextOfGumballMachine() {
-        coinReceiver = new CoinReceiver();
-        gumballDispenser = new GumballDispenser();
+        coinReceiver = new StateContextOfCoinReceiver();
+        gumballDispenser = new StateContextOfGumballDispenser();
 
         sgm1SoldOutOrCoinBoxCrowded = new SGM1SoldOutOrCoinBoxCrowded(this);
         sgm2ReadyToReceiveCoinAndDispenseGumball = new SGM2ReadyToReceiveCoinAndDispenseGumball(this);
@@ -68,12 +68,12 @@ public class StateContextOfGumballMachine extends StateContext implements IState
         // ToDo: По общему правилу, должно вызываться исключение.
         if (!(coinReceiver.getCurrentState() instanceof SCR2CoinReceivedIntermediately) ||
                 !(gumballDispenser.getCurrentState() instanceof SGD2ReadyToReleaseGumball)) {
-            return;
+            throw new RuntimeException("GM. It is imposible to turn the crank.");
         }
 
         // 2. Действие перед переходом в другое состояние.
         coinReceiver.acceptCoin();
-        // ToDo: Здесь как-то сгенерировать выдачу 1 или 2 (или N) гумбола
+        // ToDo: Здесь как-то сгенерировать выдачу 1 или 2 (или N) гумболов
         gumballDispenser.releaseGumball();
 
         // 3. Выбор состояния, в которое нужно перейти и переход в него.

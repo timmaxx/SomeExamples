@@ -6,12 +6,12 @@ import java.util.Set;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.classes.Classes;
 
 public abstract class AState implements IState {
-    private final StateContext stateContext;
+    private final StateAutomaton stateAutomaton;
 
     protected final Set<PairDestStateAndCanSwitchWithoutParams> setOfPairDestStateAndCanSwitchWithoutParams;
 
-    public AState(StateContext stateContext) {
-        this.stateContext = stateContext;
+    public AState(StateAutomaton stateAutomaton) {
+        this.stateAutomaton = stateAutomaton;
         this.setOfPairDestStateAndCanSwitchWithoutParams = new HashSet<>();
     }
 
@@ -27,7 +27,7 @@ public abstract class AState implements IState {
 
     protected final void changeState(AState state) {
         checkPosibleToChangeState(state);
-        stateContext.changeState(state);
+        stateAutomaton.changeState(state);
     }
 
     protected void doOnEnter() {
@@ -38,8 +38,8 @@ public abstract class AState implements IState {
 
     // Implemented methods of interface IState
     @Override
-    public IStateContext getStateContext() {
-        return stateContext;
+    public IStateAutomaton getStateAutomaton() {
+        return stateAutomaton;
     }
 
     // class Object

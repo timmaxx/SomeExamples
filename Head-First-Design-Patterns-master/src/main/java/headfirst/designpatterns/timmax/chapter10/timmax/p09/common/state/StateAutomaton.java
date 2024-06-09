@@ -1,6 +1,6 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state;
 
-public abstract class StateContext implements IStateContext {
+public abstract class StateAutomaton implements IStateAutomaton {
     private AState currentState;
 
     protected final void changeState(AState newState) {

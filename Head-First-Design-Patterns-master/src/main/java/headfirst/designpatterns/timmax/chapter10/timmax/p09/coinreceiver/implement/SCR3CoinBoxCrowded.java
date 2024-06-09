@@ -34,6 +34,6 @@ public class SCR3CoinBoxCrowded extends AStateOfCoinReceiver {
     @Override
     public void pullOutAllCoins() {
         super.pullOutAllCoins();
-        this.getStateAutomaton()._pullOutAllCoins();
+        getStateAutomaton()._pullOutAllCoins();
     }
 }

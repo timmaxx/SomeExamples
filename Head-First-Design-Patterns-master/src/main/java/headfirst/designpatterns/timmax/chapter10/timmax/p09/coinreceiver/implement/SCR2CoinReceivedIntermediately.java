@@ -23,13 +23,13 @@ public class SCR2CoinReceivedIntermediately extends AStateOfCoinReceiver {
     @Override
     public void ejectCoin() {
         super.ejectCoin();
-        this.getStateAutomaton()._ejectCoin();
+        getStateAutomaton()._ejectCoin();
     }
 
     @Override
     public void acceptCoin() {
         super.acceptCoin();
-        this.getStateAutomaton()._acceptCoin();
+        getStateAutomaton()._acceptCoin();
     }
 
     @Override

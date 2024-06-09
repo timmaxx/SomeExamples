@@ -17,7 +17,7 @@ public class SCR1ReadyToReceiveCoin extends AStateOfCoinReceiver {
     @Override
     public void insertCoin() {
         super.insertCoin();
-        this.getStateAutomaton()._insertCoin();
+        getStateAutomaton()._insertCoin();
     }
 
     @Override
@@ -37,6 +37,6 @@ public class SCR1ReadyToReceiveCoin extends AStateOfCoinReceiver {
     @Override
     public void pullOutAllCoins() {
         super.pullOutAllCoins();
-        this.getStateAutomaton()._pullOutAllCoins();
+        getStateAutomaton()._pullOutAllCoins();
     }
 }

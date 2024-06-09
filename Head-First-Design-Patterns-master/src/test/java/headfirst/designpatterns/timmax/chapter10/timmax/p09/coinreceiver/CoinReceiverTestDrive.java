@@ -1,10 +1,10 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.StateContextOfCoinReceiver;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.CoinReceiver;
 
 public class CoinReceiverTestDrive {
     public static void main(String[] args) {
-        StateContextOfCoinReceiver coinReceiver = new StateContextOfCoinReceiver();
+        CoinReceiver coinReceiver = new CoinReceiver();
 
         System.out.println(coinReceiver);
         System.out.println("----");

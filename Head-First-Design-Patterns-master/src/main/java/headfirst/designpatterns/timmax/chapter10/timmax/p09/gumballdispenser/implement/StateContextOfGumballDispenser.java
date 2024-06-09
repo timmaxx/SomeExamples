@@ -21,7 +21,7 @@ public class StateContextOfGumballDispenser extends StateContext implements ISta
 
     // ----
     void _refillGumballBox() {
-        // 1. Проверка, что метод можно вызывать, если нельзя, то бросить исключение.
+        // 1. Проверка, что метод можно вызывать. Если нельзя, то бросить исключение.
 
         // 2. Действие перед переходом в другое состояние.
         System.out.println("GD. Before refilling the gumball box there are " + countOfGumballs + " gumballs in the gumball box.");
@@ -33,7 +33,7 @@ public class StateContextOfGumballDispenser extends StateContext implements ISta
     }
 
     void _releaseGumball() {
-        // 1. Проверка, что метод можно вызывать, если нельзя, то бросить исключение.
+        // 1. Проверка, что метод можно вызывать. Если нельзя, то бросить исключение.
         if (countOfGumballs <= 0) {
             throw new RuntimeException("GD. The gumball box is empty, but it doesn't have to be.");
         }

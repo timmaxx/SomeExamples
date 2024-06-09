@@ -4,8 +4,8 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.IStat
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 
 public class SGM2ReadyToReceiveCoinAndDispenseGumball extends AStateOfGumballMachine implements IStateOfGumballMachine {
-    public SGM2ReadyToReceiveCoinAndDispenseGumball(StateContextOfGumballMachine stateContext) {
-        super(stateContext);
+    public SGM2ReadyToReceiveCoinAndDispenseGumball(GumballMachine gumballMachine) {
+        super(gumballMachine);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SGM3CoinReceivedIntermediately.class, true)
         );
@@ -15,7 +15,7 @@ public class SGM2ReadyToReceiveCoinAndDispenseGumball extends AStateOfGumballMac
     @Override
     public void insertCoin() {
         super.insertCoin();
-        getStateContext()._insertCoin();
+        getStateAutomaton()._insertCoin();
     }
 
     @Override
@@ -33,13 +33,13 @@ public class SGM2ReadyToReceiveCoinAndDispenseGumball extends AStateOfGumballMac
     @Override
     public void refillGumballBox() {
         super.refillGumballBox();
-        getStateContext()._refillGumballBox();
+        getStateAutomaton()._refillGumballBox();
     }
 
     @Override
     public void pullOutAllCoins() {
         super.pullOutAllCoins();
-        getStateContext()._pullOutAllCoins();
+        getStateAutomaton()._pullOutAllCoins();
     }
 /*
     // Overridden methods of class Object:

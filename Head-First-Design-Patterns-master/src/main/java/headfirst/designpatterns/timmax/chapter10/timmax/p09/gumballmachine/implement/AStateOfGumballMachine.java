@@ -4,8 +4,8 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.IStat
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState;
 
 public abstract class AStateOfGumballMachine extends AState implements IStateOfGumballMachine {
-    public AStateOfGumballMachine(StateContextOfGumballMachine stateContext) {
-        super(stateContext);
+    public AStateOfGumballMachine(GumballMachine gumballMachine) {
+        super(gumballMachine);
     }
 
     // class AState
@@ -15,8 +15,8 @@ public abstract class AStateOfGumballMachine extends AState implements IStateOfG
     }
 
     @Override
-    public StateContextOfGumballMachine getStateContext() {
-        return (StateContextOfGumballMachine) super.getStateContext();
+    public GumballMachine getStateAutomaton() {
+        return (GumballMachine) super.getStateAutomaton();
     }
 
     // interface IStateOfGumballDispenser

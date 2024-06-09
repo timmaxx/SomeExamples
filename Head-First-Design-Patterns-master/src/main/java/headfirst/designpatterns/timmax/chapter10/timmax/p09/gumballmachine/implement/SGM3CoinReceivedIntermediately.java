@@ -5,8 +5,8 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDes
 public class SGM3CoinReceivedIntermediately extends AStateOfGumballMachine {
     // private final Random randomWinner = new Random(System.currentTimeMillis());
 
-    public SGM3CoinReceivedIntermediately(StateContextOfGumballMachine stateContext) {
-        super(stateContext);
+    public SGM3CoinReceivedIntermediately(GumballMachine gumballMachine) {
+        super(gumballMachine);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 new PairDestStateAndCanSwitchWithoutParams(SGM1SoldOutOrCoinBoxCrowded.class, true)
         );
@@ -25,13 +25,13 @@ public class SGM3CoinReceivedIntermediately extends AStateOfGumballMachine {
     @Override
     public void ejectCoin() {
         super.ejectCoin();
-        getStateContext()._ejectCoin();
+        getStateAutomaton()._ejectCoin();
     }
 
     @Override
     public void turnCrank() {
         super.turnCrank();
-        getStateContext()._turnCrank();
+        getStateAutomaton()._turnCrank();
 /*
         int winner = randomWinner.nextInt(10);
         if ((winner == 0) && (this.getStateContext().getGumballDispenser().getCountOfGumballs() > 1)) {

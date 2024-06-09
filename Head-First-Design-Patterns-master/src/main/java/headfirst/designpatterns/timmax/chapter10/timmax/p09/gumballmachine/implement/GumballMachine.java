@@ -1,16 +1,16 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.implement;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.StateContextOfCoinReceiver;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateAutomaton;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.CoinReceiver;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.SCR1ReadyToReceiveCoin;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.coinreceiver.implement.SCR2CoinReceivedIntermediately;
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.implement.StateContextOfGumballDispenser;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.implement.GumballDispenser;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.implement.SGD2ReadyToReleaseGumball;
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.IStateContextOfGumballMachine;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.IStateAutomatonOfGumballMachine;
 
-public class StateContextOfGumballMachine extends StateContext implements IStateContextOfGumballMachine {
-    private final StateContextOfCoinReceiver coinReceiver;
-    private final StateContextOfGumballDispenser gumballDispenser;
+public class GumballMachine extends StateAutomaton implements IStateAutomatonOfGumballMachine {
+    private final CoinReceiver coinReceiver;
+    private final GumballDispenser gumballDispenser;
 
     private final SGM1SoldOutOrCoinBoxCrowded sgm1SoldOutOrCoinBoxCrowded;
     private final SGM2ReadyToReceiveCoinAndDispenseGumball sgm2ReadyToReceiveCoinAndDispenseGumball;
@@ -18,9 +18,9 @@ public class StateContextOfGumballMachine extends StateContext implements IState
 
     // private int countOfWinnerGumballs;
 
-    public StateContextOfGumballMachine() {
-        coinReceiver = new StateContextOfCoinReceiver();
-        gumballDispenser = new StateContextOfGumballDispenser();
+    public GumballMachine() {
+        coinReceiver = new CoinReceiver();
+        gumballDispenser = new GumballDispenser();
 
         sgm1SoldOutOrCoinBoxCrowded = new SGM1SoldOutOrCoinBoxCrowded(this);
         sgm2ReadyToReceiveCoinAndDispenseGumball = new SGM2ReadyToReceiveCoinAndDispenseGumball(this);
@@ -118,7 +118,7 @@ public class StateContextOfGumballMachine extends StateContext implements IState
         }
     }
 
-    // interface IStateContextOfGumballMachine
+    // interface IStateAutomatonOfGumballMachine
     @Override
     public final int getCountOfCoins() {
         return coinReceiver.getCountOfCoins();
@@ -134,7 +134,7 @@ public class StateContextOfGumballMachine extends StateContext implements IState
         return countOfWinnerGumballs;
     }
 */
-    // Overridden methods of class StateContext:
+    // Overridden methods of class StateAutomaton:
     @Override
     public AStateOfGumballMachine getCurrentState() {
         return (AStateOfGumballMachine) super.getCurrentState();

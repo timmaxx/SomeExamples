@@ -4,8 +4,8 @@ import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.AState;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.IStateOfGumballDispenser;
 
 public abstract class AStateOfGumballDispenser extends AState implements IStateOfGumballDispenser {
-    public AStateOfGumballDispenser(StateContextOfGumballDispenser stateContext) {
-        super(stateContext);
+    public AStateOfGumballDispenser(GumballDispenser gumballDispenser) {
+        super(gumballDispenser);
     }
 
     // class AState
@@ -15,8 +15,8 @@ public abstract class AStateOfGumballDispenser extends AState implements IStateO
     }
 
     @Override
-    public StateContextOfGumballDispenser getStateContext() {
-        return (StateContextOfGumballDispenser) super.getStateContext();
+    public GumballDispenser getStateAutomaton() {
+        return (GumballDispenser) super.getStateAutomaton();
     }
 
     // interface IStateOfGumballDispenser

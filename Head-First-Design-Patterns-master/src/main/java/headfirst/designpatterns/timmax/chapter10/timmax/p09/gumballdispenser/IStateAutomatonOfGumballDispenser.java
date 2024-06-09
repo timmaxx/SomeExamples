@@ -1,12 +1,12 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.IStateContext;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.IStateAutomaton;
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.implement.AStateOfGumballDispenser;
 
-public interface IStateContextOfGumballDispenser extends IStateContext, IStateOfGumballDispenser {
+public interface IStateAutomatonOfGumballDispenser extends IStateAutomaton, IStateOfGumballDispenser {
     int getCountOfGumballs();
 
-    // interface IStateContext
+    // interface IStateAutomaton
     @Override
     AStateOfGumballDispenser getCurrentState();
 }

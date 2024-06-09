@@ -3,8 +3,8 @@ package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.im
 import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
 
 public class SGD1GumballBoxIsEmpty extends AStateOfGumballDispenser {
-    public SGD1GumballBoxIsEmpty(StateContextOfGumballDispenser stateContext) {
-        super(stateContext);
+    public SGD1GumballBoxIsEmpty(GumballDispenser gumballDispenser) {
+        super(gumballDispenser);
         setOfPairDestStateAndCanSwitchWithoutParams.add(
                 // ToDo: в комментарии пример некорректного использования PairDestStateAndCanSwitchWithoutParams,
                 //       который будет откомпилирован, но по сути не правильный (ведь сейчас менее строго extend IState).
@@ -17,7 +17,7 @@ public class SGD1GumballBoxIsEmpty extends AStateOfGumballDispenser {
     @Override
     public void refillGumballBox() {
         super.refillGumballBox();
-        getStateContext()._refillGumballBox();
+        this.getStateAutomaton()._refillGumballBox();
     }
 
     @Override

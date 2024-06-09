@@ -1,9 +1,9 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.implement;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateContext;
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.IStateContextOfGumballDispenser;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.StateAutomaton;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballdispenser.IStateAutomatonOfGumballDispenser;
 
-public class StateContextOfGumballDispenser extends StateContext implements IStateContextOfGumballDispenser {
+public class GumballDispenser extends StateAutomaton implements IStateAutomatonOfGumballDispenser {
     public final static int MAX_OF_GUMBALLS = 6;
 
     private final SGD1GumballBoxIsEmpty sgd1GumballBoxIsEmpty;
@@ -11,7 +11,7 @@ public class StateContextOfGumballDispenser extends StateContext implements ISta
 
     private int countOfGumballs;
 
-    public StateContextOfGumballDispenser() {
+    public GumballDispenser() {
         sgd1GumballBoxIsEmpty = new SGD1GumballBoxIsEmpty(this);
         sgd2ReadyToReleaseGumball = new SGD2ReadyToReleaseGumball(this);
 
@@ -50,13 +50,13 @@ public class StateContextOfGumballDispenser extends StateContext implements ISta
         changeState(sgd2ReadyToReleaseGumball);
     }
 
-    // interface IStateContextOfGumballDispenser
+    // interface IStateAutomatonOfGumballDispenser
     @Override
     public final int getCountOfGumballs() {
         return countOfGumballs;
     }
 
-    // class StateContext
+    // class StateAutomaton
     @Override
     public AStateOfGumballDispenser getCurrentState() {
         return (AStateOfGumballDispenser) super.getCurrentState();

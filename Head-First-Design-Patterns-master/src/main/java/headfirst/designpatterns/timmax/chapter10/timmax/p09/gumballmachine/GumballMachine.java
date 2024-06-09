@@ -1,12 +1,12 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.implement.GumballMachineStateContext;
+import headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.implement.StateContextOfGumballMachine;
 
 public class GumballMachine implements IStateOfGumballMachine {
 	private final IStateOfGumballMachine stateContext;
 
 	public GumballMachine() {
-		stateContext = new GumballMachineStateContext();
+		stateContext = new StateContextOfGumballMachine();
 	}
 
 	// Implemented methods of interface IStateOfGumballMachine:

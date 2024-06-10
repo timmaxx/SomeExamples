@@ -6,11 +6,11 @@ import java.util.Set;
 public abstract class AState implements IState {
     private final StateAutomaton stateAutomaton;
 
-    protected final Set<PairDestStateAndCanSwitchWithoutParams> setOfPairDestStateAndCanSwitchWithoutParams;
+    protected final Set<Class<? extends IState>> setOfDestState;
 
     public AState(StateAutomaton stateAutomaton) {
         this.stateAutomaton = stateAutomaton;
-        this.setOfPairDestStateAndCanSwitchWithoutParams = new HashSet<>();
+        this.setOfDestState = new HashSet<>();
     }
 
     protected final void changeState(AState state) {

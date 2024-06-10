@@ -1,18 +1,12 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.implement;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
-
 public class SGM3CoinReceivedIntermediately extends AStateOfGumballMachine {
     // private final Random randomWinner = new Random(System.currentTimeMillis());
 
     public SGM3CoinReceivedIntermediately(GumballMachine gumballMachine) {
         super(gumballMachine);
-        setOfPairDestStateAndCanSwitchWithoutParams.add(
-                new PairDestStateAndCanSwitchWithoutParams(SGM1SoldOutOrCoinBoxCrowded.class, true)
-        );
-        setOfPairDestStateAndCanSwitchWithoutParams.add(
-                new PairDestStateAndCanSwitchWithoutParams(SGM2ReadyToReceiveCoinAndDispenseGumball.class, true)
-        );
+        setOfDestState.add(SGM1SoldOutOrCoinBoxCrowded.class);
+        setOfDestState.add(SGM2ReadyToReceiveCoinAndDispenseGumball.class);
     }
 
     // Implemented methods of the IStateOfGumballMachine interface:

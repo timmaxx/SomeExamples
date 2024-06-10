@@ -1,14 +1,10 @@
 package headfirst.designpatterns.timmax.chapter10.timmax.p09.gumballmachine.implement;
 
-import headfirst.designpatterns.timmax.chapter10.timmax.p09.common.state.PairDestStateAndCanSwitchWithoutParams;
-
 public class SGM1SoldOutOrCoinBoxCrowded extends AStateOfGumballMachine {
     public SGM1SoldOutOrCoinBoxCrowded(GumballMachine gumballMachine) {
         super(gumballMachine);
 		// Такой вариант не описан на стр. 442, но должен быть...
-		setOfPairDestStateAndCanSwitchWithoutParams.add(
-				new PairDestStateAndCanSwitchWithoutParams(SGM2ReadyToReceiveCoinAndDispenseGumball.class, true)
-		);
+		setOfDestState.add(SGM2ReadyToReceiveCoinAndDispenseGumball.class);
     }
 
     // Implemented methods of interface IStateOfGumballMachine:

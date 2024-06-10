@@ -15,9 +15,8 @@ public abstract class StateAutomaton implements IStateAutomaton {
     }
 
     private void checkPosibleToChangeState(AState newState) {
-        for (PairDestStateAndCanSwitchWithoutParams pairDestStateAndCanSwitchWithoutParams : currentState.setOfPairDestStateAndCanSwitchWithoutParams) {
-            if (Classes.isInstanceOf(newState, pairDestStateAndCanSwitchWithoutParams.destinationStateClass())
-                    && pairDestStateAndCanSwitchWithoutParams.canSwitchWithoutParams()) {
+        for (Class<? extends IState> clazz : currentState.setOfDestState) {
+            if (Classes.isInstanceOf(newState, clazz)) {
                 return;
             }
         }

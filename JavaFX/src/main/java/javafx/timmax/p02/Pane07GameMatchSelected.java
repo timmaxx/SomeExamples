@@ -18,9 +18,12 @@ public class Pane07GameMatchSelected extends AbstractConnectStatePane {
         System.out.println("Pane07GameMatchSelected :: Pane07GameMatchSelected(TransportOfClient transportOfClient)");
 
         gameViewsAndControlsPane = new Pane();
+        gameViewsAndControlsPane.setPrefWidth(200);
+
         GameClientPaneJfx gameClientPaneJfx = new GameClientPaneJfx();
         gameClientPaneJfx.setPrefWidth(100);
         gameClientPaneJfx.setMinWidth(100);
+
         gameViewsAndControlsPane.getChildren().add(gameClientPaneJfx);
 
 
@@ -59,9 +62,6 @@ public class Pane07GameMatchSelected extends AbstractConnectStatePane {
                 List.of(),
                 List.of(gameViewsAndControlsPane)
         );
-
-        autosize();
-        System.out.println("  isResizable() = " + isResizable());
     }
 
 

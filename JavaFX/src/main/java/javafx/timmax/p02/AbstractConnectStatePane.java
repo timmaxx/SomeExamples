@@ -76,9 +76,6 @@ public abstract class AbstractConnectStatePane extends HBox {
         nextStatePane.getChildren().clear();
         prevStatePane.getChildren().clear();
 
-        prevStatePane.setPrefWidth(200);
-
-/*
         int max = 0;
         for (Region region : prevStateControlsList) {
             if(max < region.getPrefWidth()) {
@@ -86,8 +83,6 @@ public abstract class AbstractConnectStatePane extends HBox {
             }
         }
         prevStatePane.setPrefWidth(max);
-*/
-
 
         nextStatePane.getChildren().addAll(nextStateControlsList);
         prevStatePane.getChildren().addAll(prevStateControlsList);

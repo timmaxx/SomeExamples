@@ -4,4 +4,5 @@ module JavaFX {
 
     exports javafx.metanit.p1_2;
     exports javafx.timmax.p01;
+    exports javafx.timmax.p02;
 }

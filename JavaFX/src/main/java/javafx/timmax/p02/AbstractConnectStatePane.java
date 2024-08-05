@@ -47,17 +47,20 @@ public abstract class AbstractConnectStatePane extends HBox {
 
         nextStatePane = new Pane();
         nextStatePane.setPrefWidth(PANE_NEXT_STATE_PREF_WIDTH); // 300
+        nextStatePane.setMinWidth(PANE_NEXT_STATE_PREF_WIDTH); // 300
 
         nextStateButton = new Button();
         nextStateButton.setPrefWidth(BUTTON_NEXT_STATE_PREF_WIDTH); // 160
+        nextStateButton.setMinWidth(BUTTON_NEXT_STATE_PREF_WIDTH); // 160
         nextStateButton.setLayoutX(nextStatePane.getPrefWidth() - nextStateButton.getPrefWidth()); // 300 - 160 = 140
 
         prevStateButton = new Button();
         prevStateButton.setPrefWidth(BUTTON_PREV_STATE_PREF_WIDTH); // 160
+        prevStateButton.setMinWidth(BUTTON_PREV_STATE_PREF_WIDTH); // 160
         prevStateButton.setLayoutX(LAYOUT_X_OF_FIRST_COLUMN); // 0
 
         prevStatePane = new Pane();
-        prevStatePane.setPrefWidth(PANE_PREV_STATE_PREF_WIDTH); // 0
+        // prevStatePane.setPrefWidth(PANE_PREV_STATE_PREF_WIDTH); // 0
         prevStatePane.setLayoutX(LAYOUT_X_OF_FIRST_COLUMN + BUTTON_PREV_STATE_PREF_WIDTH); // 0 + 160 = 160
 
         getChildren().addAll(nextStatePane, nextStateButton, prevStateButton, prevStatePane);
@@ -82,6 +85,7 @@ public abstract class AbstractConnectStatePane extends HBox {
                 max = (int) region.getPrefWidth();
             }
         }
+        System.out.println("  max = " + max);
         prevStatePane.setPrefWidth(max);
 
         nextStatePane.getChildren().addAll(nextStateControlsList);

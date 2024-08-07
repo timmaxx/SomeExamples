@@ -12,23 +12,17 @@ public class Pane07GameMatchSelected extends AbstractConnectStatePane {
         System.out.println("Pane07GameMatchSelected :: Pane07GameMatchSelected(TransportOfClient transportOfClient)");
 
         gameViewsAndControlsPane = new Pane();
-        gameViewsAndControlsPane.setPrefWidth(200);
-
-        GameClientPaneJfx gameClientPaneJfx = new GameClientPaneJfx();
-        gameClientPaneJfx.setPrefWidth(100);
-        gameClientPaneJfx.setMinWidth(100);
-
-        gameViewsAndControlsPane.getChildren().add(gameClientPaneJfx);
-
 
         // 1 (обязательные)
         // Контролы для продвижения состояния "вперёд":
         nextStateButton.setText("Start the game match");
         nextStateButton.setOnAction(event -> {
-            disableAllControls();
+            // disableAllControls();
 
-            gameViewsAndControlsPane.setPrefWidth(200);
-            // getParent().getScene().getWindow().sizeToScene();
+            GameClientPaneJfx gameClientPaneJfx = new GameClientPaneJfx();
+
+            gameViewsAndControlsPane.getChildren().add(gameClientPaneJfx);
+            getParent().getScene().getWindow().sizeToScene();
         });
 
         // Контролы для продвижения состояния "назад":

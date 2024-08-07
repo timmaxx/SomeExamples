@@ -1,5 +1,7 @@
 package javafx.timmax.p02;
 
+import javafx.scene.layout.HBox;
+
 import java.util.List;
 
 public class Pane07GameMatchSelected extends AbstractConnectStatePane {
@@ -7,13 +9,15 @@ public class Pane07GameMatchSelected extends AbstractConnectStatePane {
 
     public Pane07GameMatchSelected() {
         gameClientPaneJfx = new GameClientPaneJfx();
+        MyListChangeListener myListChangeListener = new MyListChangeListener<HBox>();
+        gameClientPaneJfx.getChildren().addListener(myListChangeListener);
 
         // 1 (обязательные)
         // Контролы для продвижения состояния "вперёд":
         nextStateButton.setText("Start the game match");
         nextStateButton.setOnAction(event -> {
+            myListChangeListener.setScene(getScene());
             gameClientPaneJfx.createControls();
-            getParent().getScene().getWindow().sizeToScene();
             prevStateButton.setDisable(false);
         });
 
@@ -21,7 +25,6 @@ public class Pane07GameMatchSelected extends AbstractConnectStatePane {
         prevStateButton.setText("Stop the game match");
         prevStateButton.setOnAction(event -> {
             gameClientPaneJfx.getChildren().clear();
-            getParent().getScene().getWindow().sizeToScene();
             prevStateButton.setDisable(true);
         });
 

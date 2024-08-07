@@ -12,14 +12,11 @@ public abstract class AbstractConnectStatePane extends HBox {
     public final static int LAYOUT_X_OF_SECOND_COLUMN = 100;
 
     // Количество пикселей слева и справа, что-бы главное поле влезло во внутреннее окно - PrimaryStage
-    public final static int PIXELS_ON_LEFT_N_RIGHT_FOR_MAIN_FIELD_FITS_INTO_PRIMARY_STAGE = 17;
-
     public final static int PANE_NEXT_STATE_PREF_WIDTH = 300;
     public final static int PANE_PREV_STATE_PREF_WIDTH = 0;
 
     public final static int BUTTON_NEXT_STATE_PREF_WIDTH = 160;
     public final static int BUTTON_PREV_STATE_PREF_WIDTH = 160;
-    public final static int PIXELS_ON_RIGHT_FROM_MAIN_FIELD = 2;
 
     // Y - составляющие
     public final static int LAYOUT_Y_OF_FIRST_ROW = 0;
@@ -31,7 +28,6 @@ public abstract class AbstractConnectStatePane extends HBox {
     //   paneNextState.setPrefHeight(DIFFERENCE_OF_LAYOUT_Y * ?);
     //   paneNextState.setMinHeight(DIFFERENCE_OF_LAYOUT_Y * ?);
     public final static int ROWS_OF_CONTROLS_IN_PANE0X_EXCEPT_LAST = 7;
-    private final static int PIXELS_ON_BOTTOM_FROM_MAIN_FIELD = 2;
 
 
     protected Pane nextStatePane;
@@ -66,10 +62,6 @@ public abstract class AbstractConnectStatePane extends HBox {
         getChildren().addAll(nextStatePane, nextStateButton, prevStateButton, prevStatePane);
     }
 
-    public List<Region> getNextStateControlsList() {
-        return nextStateControlsList;
-    }
-
     public void setListsOfControlsAndAllDisable(
             List<Region> nextStateControlsList,
             List<Region> prevStateControlsList
@@ -78,7 +70,7 @@ public abstract class AbstractConnectStatePane extends HBox {
         this.prevStateControlsList = prevStateControlsList;
         nextStatePane.getChildren().clear();
         prevStatePane.getChildren().clear();
-
+/*
         int max = 0;
         for (Region region : prevStateControlsList) {
             if(max < region.getPrefWidth()) {
@@ -87,7 +79,7 @@ public abstract class AbstractConnectStatePane extends HBox {
         }
         System.out.println("  max = " + max);
         prevStatePane.setPrefWidth(max);
-
+*/
         nextStatePane.getChildren().addAll(nextStateControlsList);
         prevStatePane.getChildren().addAll(prevStateControlsList);
         disableAllControls();
@@ -119,49 +111,4 @@ public abstract class AbstractConnectStatePane extends HBox {
     protected void doOnPrevState() {
         disableAllControls();
     }
-
-    protected void doOnThisState() {
-        setDisableNextStateControls(false);
-    }
-
-    protected void doOnNextState() {
-        setDisableNextStateControls(true);
-    }
-
-/*
-    // Implemented methods of interface ObserverOnAbstractEvent
-    @Override
-    public void updateOnClose() {
-        doOnPrevState();
-    }
-
-    @Override
-    public void updateOnOpen() {
-        doOnPrevState();
-    }
-
-    // 2
-    @Override
-    public void updateOnAuthorizeUser() {
-        doOnPrevState();
-    }
-
-    // 4
-    @Override
-    public void updateOnSetGameType() {
-        doOnPrevState();
-    }
-
-    // 6
-    @Override
-    public void updateOnSetGameMatch() {
-        doOnPrevState();
-    }
-
-    // 7
-    @Override
-    public void updateOnSetGameMatchIsPlaying() {
-        doOnPrevState();
-    }
-*/
 }

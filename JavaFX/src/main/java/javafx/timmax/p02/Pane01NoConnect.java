@@ -2,11 +2,7 @@ package javafx.timmax.p02;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 
-
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 
@@ -35,23 +31,12 @@ public class Pane01NoConnect extends AbstractConnectStatePane {
         nextStateButton.setText("Connect");
         nextStateButton.setOnAction(event -> {
             disableAllControls();
-/*
-            // ToDo: С методом setURI() нужно разобраться - включать или не включать его в интерфейс?
-            transportOfClient.setURI(getURIFromControls());
-            transportOfClient.connect();
-*/
+
             System.out.println("getParent() = " + getParent());
-            System.out.println("((Pane)(getParent())) = " + ((Pane)(getParent())));
             MainVBox parent = (MainVBox) getParent();
 
             Pane07GameMatchSelected pane = (Pane07GameMatchSelected) parent.getPane2();
             pane.setDisableNextStateControls(false);
-            /*
-            for (:parent.getChildren()) {
-
-            }
-            */
-            //((Pane)(getParent()))
         });
 
         // Контролы для продвижения состояния "назад":
@@ -59,9 +44,6 @@ public class Pane01NoConnect extends AbstractConnectStatePane {
         prevStateButton.setFocusTraversable(false);
         prevStateButton.setOnAction(event -> {
             disableAllControls();
-/*
-            transportOfClient.close();
-*/
         });
 
         // 1
@@ -92,26 +74,4 @@ public class Pane01NoConnect extends AbstractConnectStatePane {
         // ToDo: метод с параметром 'false' нужно вызывать, когда панель соответствует состоянию.
         setDisableNextStateControls(false);
     }
-
-    public URI getURIFromControls() {
-        connectStringTextField.setText("ws://" + serverAddressTextField.getText() + ":" + serverPortTextField.getText());
-        try {
-            return new URI(connectStringTextField.getText());
-        } catch (URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
-    }
-/*
-    // interface ObserverOnAbstractEvent
-    // 1
-    @Override
-    public void updateOnClose() {
-        doOnThisState();
-    }
-
-    @Override
-    public void updateOnOpen() {
-        doOnNextState();
-    }
-*/
 }

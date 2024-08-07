@@ -5,8 +5,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class GameClientPaneJfx extends VBox {
-
-    public GameClientPaneJfx() {
+    public void createControls() {
         Pane viewJfx = new Pane();
         Button button = new Button("Some button");
         button.setPrefWidth(200);

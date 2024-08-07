@@ -1,17 +1,15 @@
 package javafx.timmax.p02;
 
-import javafx.scene.layout.Pane;
-
 import java.util.List;
 
 public class Pane07GameMatchSelected extends AbstractConnectStatePane {
-    private final Pane gameViewsAndControlsPane;
+    private final GameClientPaneJfx gameClientPaneJfx;
 
     public Pane07GameMatchSelected() {
 
         System.out.println("Pane07GameMatchSelected :: Pane07GameMatchSelected(TransportOfClient transportOfClient)");
 
-        gameViewsAndControlsPane = new Pane();
+        gameClientPaneJfx = new GameClientPaneJfx();
 
         // 1 (обязательные)
         // Контролы для продвижения состояния "вперёд":
@@ -19,9 +17,7 @@ public class Pane07GameMatchSelected extends AbstractConnectStatePane {
         nextStateButton.setOnAction(event -> {
             // disableAllControls();
 
-            GameClientPaneJfx gameClientPaneJfx = new GameClientPaneJfx();
-
-            gameViewsAndControlsPane.getChildren().add(gameClientPaneJfx);
+            gameClientPaneJfx.createControls();
             getParent().getScene().getWindow().sizeToScene();
         });
 
@@ -41,7 +37,7 @@ public class Pane07GameMatchSelected extends AbstractConnectStatePane {
         // Вызов setListsOfControlsAndAllDisable() нужен для разделения контролов на два перечня: "вперёд" и "назад".
         setListsOfControlsAndAllDisable(
                 List.of(),
-                List.of(gameViewsAndControlsPane)
+                List.of(gameClientPaneJfx)
         );
     }
 
@@ -54,9 +50,9 @@ public class Pane07GameMatchSelected extends AbstractConnectStatePane {
         nextStatePane.setMinHeight(DIFFERENCE_OF_LAYOUT_Y);
         setListsOfControlsAndAllDisable(
                 List.of(),
-                List.of(gameViewsAndControlsPane)
+                List.of(gameClientPaneJfx)
         );
-        gameViewsAndControlsPane.getChildren().clear();
+        gameClientPaneJfx.getChildren().clear();
         prevStatePane.setPrefWidth(PANE_PREV_STATE_PREF_WIDTH);
 
         getParent().getScene().getWindow().setHeight(
